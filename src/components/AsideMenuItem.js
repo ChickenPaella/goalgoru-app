@@ -19,13 +19,14 @@ class AsideMenuItem extends React.Component {
             color: this.props.active?"#ffffff":"#666666"
         }
         return <li style={style}>
-            <Link to={this.props.path} style={linkStyle} onClick={this.props.onCloseAside}>{this.props.name}</Link>
+            <Link to={this.props.path} style={linkStyle} onClick={this.props.onMove}>{this.props.name}</Link>
         </li>
     }
 }
+
 let mapDispatchToProps = (dispatch) => {
     return {
-        onCloseAside: (e) => {
+        onMove: (title) => {
             dispatch(undimming());
             dispatch(closeAside());
         }

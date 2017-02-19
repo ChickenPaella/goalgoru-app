@@ -7,6 +7,7 @@ import App from './components/App';
 import MainContainer from './containers/MainContainer';
 import RewardContainer from './containers/RewardContainer';
 import MyPageContainer from './containers/MyPageContainer';
+import SearchContainer from './containers/SearchContainer';
 import AppReducer from './reducers/AppReducer';
 import DimmerReducer from './reducers/DimmerReducer';
 
@@ -19,6 +20,7 @@ ReactDOM.render(
                 <IndexRoute component={MainContainer} />
                 <Route path="my" component={MyPageContainer} />
                 <Route path="reward" component={RewardContainer} />
+                <Route path="search" component={SearchContainer} />
             </Route>
         </Router>
     </Provider>,

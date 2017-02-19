@@ -2,12 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { changeTitle } from '../actions/NavigationAction';
 
-class RewardContainer extends React.Component {
+class SearchContainer extends React.Component {
     componentDidMount() {
-        this.props.onChangeTitle("포인트몰");
+        this.props.onChangeTitle("검색");
     }
     render() {
-        return <h1>Reward</h1>
+        return <div>
+            <h1>Search</h1>
+        </div>
     }
 }
 
@@ -16,9 +18,9 @@ let mapDispatchToProps = (dispatch) => {
         onChangeTitle: (title) => {
             dispatch(changeTitle(title));
         }
-    };
-};
+    }
+}
 
-RewardContainer = connect(undefined, mapDispatchToProps)(RewardContainer);
+SearchContainer = connect(undefined, mapDispatchToProps)(SearchContainer);
 
-export default RewardContainer;
+export default SearchContainer;
