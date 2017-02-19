@@ -2,7 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { openAside } from '../actions/AsideAction';
 import { dimming, undimming } from '../actions/DimmerAction';
+import { changeTitle } from '../actions/NavigationAction';
 import FontAwesome from 'react-fontawesome';
+import { Link } from 'react-router';
 
 class Navigation extends React.Component {
     render() {
@@ -33,29 +35,51 @@ class Navigation extends React.Component {
         let menuButtonStyle = {
             lineHeight: "51px",
             padding: "0 18px",
-            fontSize: "24px"
+            fontSize: "24px",
+            color:"#444444"
+        }
+
+        let searchButtonStype = {
+            lineHeight: "51px",
+            padding: "0 18px",
+            fontSize: "24px",
+            color: "#444444",
+            float: "right",
         }
 
         return <div style={style}>
-            <FontAwesome name="bars" style={menuButtonStyle} onClick={this.props.onOpenAside}/>
-            <a href="/" style={linkStyle}>{this.props.title}</a>
+            <FontAwesome name="bars" style={menuButtonStyle} onClick={this.props.onOpenAside} />
+            <span style={linkStyle}>{this.props.title}</span>
+            <Link to="search" onClick={this.props.onOpenSearch}><FontAwesome name="search" style={searchButtonStype} /></Link>
         </div>
     }
 }
 
-Navigation.propTypes = {
-    title: React.PropTypes.string.isRequired
+Navigation.defaultProps = {
+    title: "고루고루"
 }
 
+Navigation.PropTypes = {
+    title : React.PropTypes.string.isRequired
+}
+
+let mapStateToProps = (state) => {
+    return {
+        title: state.navi.title
+    }
+}
 let mapDispatchToProps = (dispatch) => {
     return {
         onOpenAside: () => {
             dispatch(dimming());
             dispatch(openAside());
+        },
+        onOpenSearch: () => {
+            dispatch(changeTitle('/search'));
         }
     };
 };
 
-Navigation = connect(undefined, mapDispatchToProps)(Navigation);
+Navigation = connect(mapStateToProps, mapDispatchToProps)(Navigation);
 
 export default Navigation;
