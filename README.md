@@ -1,46 +1,12 @@
-# Gorugoru Web Application
+# REACT.JS Skeleton
 
-## Project Properties
-- NodeJS (Expresss Framework)
-- ReactJS
-- Webpack & Babel
+This project is a React workspace that you can simply start working on React.js project right away.
 
+React 0.14.7, Babel 6 and webpack on Node.js is used to setup the environment.
 
-## Initializing Project
-Need to run below command when project's first pulled.
-```sh
-$ npm install
-```
+## How to use
+- ``git clone https://github.com/velopert/react-skeleton.git`` - Clone the project
+- ``npm install`` - Install the dependency
+- ``npm start``  -Run the development server
 
-## How to import 3p library
-When you need to import 3 party library from npm, you should add option [ --save ]
-This option will append dependency information to [package.json].
-```sh
-$ npm install --save <library-name>
-```
-
-## NodeJS Server
-### Starting NodeJS Server(Express Framework)
-Web Server's run command.
-```sh
-$ npm start
-```
-
-## Webpack
-### Generate bundle.js (Webpack)
-Convert JSX file to js.
-```sh
-$ webpack
-```
-
-### Watching Mode
-Webpack's Useful option for auto detacting of file changes.
-```sh
-$ webpack --watch
-```
-
-### Progress Mode
-Show progress rate of generating file.
-```sh
-$ webpack --progress
-```
+*Server port is set to **7777***

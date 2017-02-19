@@ -1,22 +1,28 @@
-var glob = require('glob');
-
 module.exports = {
-    entry: glob.sync('./app/*.js'),
-    devtool: 'sourcemaps',
-    cache: true,
-    debug: true,
+    entry: './src/index.js',
+
     output: {
-       path: __dirname,
-       filename: './public/javascripts/built/bundle.js'
+        path: __dirname + '/public',
+        filename: 'bundle.js'
     },
-    module: {
+
+    devServer: {
+        inline: true,
+        port: 3000,
+        historyApiFallback: true,
+        contentBase: __dirname + '/public'
+    },
+
+    module:
+    {
         loaders: [
             {
-                test: /\.jsx?$/,
-                exclude: /(node_modules)/,
+                test: /\.js$/,
                 loader: 'babel',
+                exclude: /node_modules/,
                 query: {
-                    presets:['react','es2015']
+                    cacheDirectory: true,
+                    presets: ['es2015', 'stage-0', 'react']
                 }
             }
         ]
