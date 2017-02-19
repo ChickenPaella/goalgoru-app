@@ -29,5 +29,6 @@ chrome-user-data
 .idea
 *.iml
 .vscode
+.jshintrc
 bundle.js
 bundle.js.map
