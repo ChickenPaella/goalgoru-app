@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { openAside } from '../actions/AsideAction';
 import { dimming, undimming } from '../actions/DimmerAction';
-import { changeTitle } from '../actions/NavigationAction';
 import FontAwesome from 'react-fontawesome';
 import { Link } from 'react-router';
 
@@ -73,9 +72,6 @@ let mapDispatchToProps = (dispatch) => {
         onOpenAside: () => {
             dispatch(dimming());
             dispatch(openAside());
-        },
-        onOpenSearch: () => {
-            dispatch(changeTitle('/search'));
         }
     };
 };
