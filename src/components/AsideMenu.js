@@ -8,7 +8,7 @@ class AsideMenu extends React.Component {
         this.state = {
             menus: [
                 {name: "홈", path:"/", active:router.isActive("/", true)},
-                {name: "나의 포인트", path:"/point", active:router.isActive("/point")},
+                {name: "나의 상태", path:"/my", active:router.isActive("/my")},
                 {name: "포인트몰", path:"/reward", active:router.isActive("/reward")},
             ]
         }
