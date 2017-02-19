@@ -1,10 +1,15 @@
 import React from 'react';
+import MyNutritionStatus from '../components/MyNutritionStatus';
+import BadgeHistory from '../components/BadgeHistory';
 
 class MyPageContainer extends React.Component {
     render() {
-        return <div>
-            <h1>MyPage</h1>
-        </div>
+        return (
+          <div>
+            <MyNutritionStatus />
+            <BadgeHistory />
+          </div>
+        );
     }
 }
 
