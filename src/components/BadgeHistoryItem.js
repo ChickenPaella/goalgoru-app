@@ -3,8 +3,6 @@ import React from "react";
 class BadgeHistoryItem extends React.Component {
     constructor(props, context) {
         super(props, context);
-
-
     }
 
     render() {
@@ -37,7 +35,7 @@ class BadgeHistoryItem extends React.Component {
           let tmpString = "";
 
           tmpString += tmpDate.getFullYear() + ".";
-          tmpString += ((tmpDate.getMonth() < 9) ? "0" + tmpDate.getMonth() : tmpDate.getMonth() + 1) + ".";
+          tmpString += ((tmpDate.getMonth() < 9) ? "0" + (tmpDate.getMonth() + 1) : tmpDate.getMonth() + 1) + ".";
           tmpString += ((tmpDate.getDate() < 10) ? "0" + tmpDate.getDate()  : tmpDate.getDate()) + ".";
 
           tmpString += " ";
