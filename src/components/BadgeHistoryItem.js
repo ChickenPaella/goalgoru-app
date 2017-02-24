@@ -71,8 +71,8 @@ class BadgeHistoryItem extends React.Component {
 
         return (
           <li style={style}>
-            <span style={titleStyle}>{this.props.menu.name}</span>
-            <span style={descStyle}>{getHistoryDate()} | {this.props.store.name}</span>
+            <span style={titleStyle}>{this.props.menuName}</span>
+            <span style={descStyle}>{getHistoryDate()} | {this.props.storeName}</span>
             {
               (this.props.isValidated)?
               <img style={badgeStyle} src="//placehold.it/30x30?text=뱃지" />:<button style={badgeStyle} onClick={this.props.onOpenValidate}>인증하기</button>
@@ -91,12 +91,5 @@ let mapDispatchToProps = (dispatch) => {
 };
 
 BadgeHistoryItem = connect(undefined, mapDispatchToProps)(BadgeHistoryItem);
-
-BadgeHistoryItem.propTypes = {
-    menu: React.PropTypes.object.isRequired,
-    store: React.PropTypes.object.isRequired,
-    date: React.PropTypes.number.isRequired,
-    isValidated: React.PropTypes.bool
-};
 
 export default BadgeHistoryItem;
