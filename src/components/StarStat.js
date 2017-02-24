@@ -15,7 +15,7 @@ class StarStat extends React.Component {
 
     render() {
       let style = {
-        "backgroundColor": "#583DC6",
+        "backgroundColor": "#6C3AC0",
         "color": "#FFFFFF"
       };
 

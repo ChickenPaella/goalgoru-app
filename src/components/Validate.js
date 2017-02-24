@@ -1,5 +1,6 @@
 import React from "react";
 import FontAwesome from "react-fontawesome";
+import InputForm from "./InputForm";
 
 class Validate extends React.Component {
     constructor(props, context) {
@@ -8,15 +9,18 @@ class Validate extends React.Component {
 
     render() {
       let style = {
-        "position": "absolute",
-        "left": "5%",
-        "top": "5%",
-        "width": "90%",
-        "height": "90%",
-        "backgroundColor": "#FFFFFF",
+        "textAlign": "justify"
+      };
 
-
-        "display": "none"
+      let buttonStyle = {
+        "position": "fixed",
+        "left": "0px",
+        "bottom": "0px",
+        "width": "100%",
+        "height": "3em",
+        "border": "0px",
+        "backgroundColor": "#6C3AC0",
+        "color": "#FFFFFF"
       };
 
       const getDate = () => {
@@ -58,22 +62,12 @@ class Validate extends React.Component {
 
       return (
         <div style={style}>
-          <div>
-            <span>식사한 식당</span>
-            <input type="text" value={this.props.store.name} />
-          </div>
-          <div>
-            <span>일자</span>
-            <input type="date" value={getDate()} />
-          </div>
-          <div>
-            <span>음식명</span>
-            <input type="text" value={this.props.menu.name} />
-          </div>
-          <div>
-            <span>영수증 번호</span>
-            <input type="text" />
-          </div>
+          <InputForm name="store" title="식사한 식당" width="48%" value={this.props.store.name} readOnly={true} />
+          <InputForm name="date" title="일자" width="49%" value={getDate()} readOnly={true}/>
+          <InputForm name="menu" title="음식명" width="100%" value={this.props.menu.name} readOnly={true}/>
+          <InputForm name="authCode" title="영수증 번호" width="100%" />
+
+          <button style={buttonStyle}>제출하고 뱃지 받기</button>
         </div>
       );
     }

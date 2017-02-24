@@ -9,6 +9,7 @@ import RewardContainer from './containers/RewardContainer';
 import MyPageContainer from './containers/MyPageContainer';
 import SearchContainer from './containers/SearchContainer';
 import LocationContainer from './containers/LocationContainer';
+import ValidateContainer from './containers/ValidateContainer';
 import AppReducer from './reducers/AppReducer';
 import DimmerReducer from './reducers/DimmerReducer';
 
@@ -23,6 +24,7 @@ ReactDOM.render(
                 <Route path="reward" component={RewardContainer} />
                 <Route path="search" component={SearchContainer} />
                 <Route path="location" component={LocationContainer} />
+                <Route path="validate" component={ValidateContainer} />
             </Route>
         </Router>
     </Provider>,
