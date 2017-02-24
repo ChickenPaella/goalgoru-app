@@ -3,7 +3,8 @@ import FontAwesome from "react-fontawesome";
 import InputForm from "./InputForm";
 import { connect } from 'react-redux';
 import { dimming, undimming } from '../actions/DimmerAction';
-import { openValidate, closeValidate } from '../actions/MyPageAction';
+import { openValidateConfirm, closeValidateConfirm,
+         openBadgeAcquired, closeBadgeAcquired } from '../actions/MyPageAction';
 
 class Validate extends React.Component {
     constructor(props, context) {
@@ -32,14 +33,12 @@ class Validate extends React.Component {
         "color": "#FFFFFF"
       };
 
-      let openedAlertStyle = {
+      const alertStyle = {
         "zIndex": "1000",
         "width": "70%",
         "left": "50%",
         "marginLeft": "-35%",
-        "height": "200px",
         "top": "50%",
-        "marginTop": "-100px",
         "backgroundColor": "#FFFFFF",
         "display": "block",
         "position": "absolute",
@@ -47,6 +46,14 @@ class Validate extends React.Component {
         "padding": "10px",
         "borderRadius": "10px"
       };
+
+      let openedValidateConfirmStyle = Object.assign({}, alertStyle);
+      openedValidateConfirmStyle.height = "200px";
+      openedValidateConfirmStyle.marginTop = "-100px";
+
+      let openedBadgeAcquiredStyle = Object.assign({}, alertStyle);
+      openedBadgeAcquiredStyle.height = "400px";
+      openedBadgeAcquiredStyle.marginTop = "-200px";
 
       let alertTitleStyle = {
         "display": "block",
@@ -72,10 +79,6 @@ class Validate extends React.Component {
         "color": "#FFFFFF",
         "border": "0px",
         "borderRadius": "0px 0px 10px 10px"
-      };
-
-      let closedAlertStyle = {
-        "display": "none"
       };
 
       const getDate = () => {
@@ -124,11 +127,14 @@ class Validate extends React.Component {
 
           <button style={buttonStyle} onClick={this.props.onOpenValidate}>제출하고 뱃지 받기</button>
 
-          <div style={this.props.alertVisible?openedAlertStyle:closedAlertStyle}>
+          <div style={this.props.validateConfirmVisible?openedValidateConfirmStyle:{"display": "none"}}>
             <span style={alertTitleStyle}>뱃지를 받기 전에!</span>
             <span style={alertDescStyle}>실제 식사와 내용이 다를 경우 이용에 불편을 겪을 수 있습니다.<br />
             올바른 정보인지 다시 한 번 확인해주세요.</span>
             <button style={alertButtonStyle} onClick={this.props.onCloseValidate}>확인</button>
+          </div>
+
+          <div style={this.props.badgeAcquiredVisible?openedBadgeAcquiredStyle:{"display": "none"}}>
           </div>
         </div>
       );
@@ -137,7 +143,8 @@ class Validate extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        alertVisible: state.mypage.alertVisible
+        validateConfirmVisible: state.mypage.validateConfirmVisible,
+        badgeAcquiredVisible: state.mypage.badgeAcquiredVisible
     };
 };
 
@@ -145,10 +152,10 @@ let mapDispatchToProps = (dispatch) => {
     return {
       onOpenValidate: () => {
           dispatch(dimming());
-          dispatch(openValidate());
+          dispatch(openValidateConfirm());
       },
       onCloseValidate: () => {
-          dispatch(closeValidate());
+          dispatch(closeValidateConfirm());
           dispatch(undimming());
       }
     };
