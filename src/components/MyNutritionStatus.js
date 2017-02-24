@@ -66,13 +66,13 @@ class MyNutritionStatus extends React.Component {
         let data = [{name: 'Group A', value: 400}, {name: 'Group B', value: 300}, {name: 'Group C', value: 300}, {name: 'Group D', value: 200}];
         const RADIAN = Math.PI / 180;
         const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
-         	const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-          const x  = cx + radius * Math.cos(-midAngle * RADIAN);
-          const y = cy  + radius * Math.sin(-midAngle * RADIAN);
+         	const radius = outerRadius * 1.3;
+          const x = cx + radius * Math.cos(-midAngle * RADIAN);
+          const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
           return (
-            <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} 	dominantBaseline="central">
-            	{`${(percent * 100).toFixed(0)}%`}
+            <text x={x} y={y} fill="#6C3AC0" textAnchor={x > cx ? 'start' : 'end'} 	dominantBaseline="central">
+              {`${(percent * 100).toFixed(0)}%`}
             </text>
           );
         };
@@ -85,9 +85,9 @@ class MyNutritionStatus extends React.Component {
 
             <span style={titleStyle}>{this.state.year}년 {this.state.month}월</span>
             <div style={{"textAlign": "center"}}>
-              <PieChart width={300} height={300} label={renderCustomizedLabel} style={{"display": "inline-block"}}>
+              <PieChart width={300} height={300} style={{"display": "inline-block"}}>
                 <Pie data={data} cx="50%" cy="50%" outerRadius={50} fill="#F3EA52" />
-                <Pie data={data} cx="50%" cy="50%" innerRadius={60} outerRadius={80} fill="#6C3AC0" label />
+                <Pie data={data} cx="50%" cy="50%" innerRadius={60} outerRadius={80} fill="#6C3AC0" label={renderCustomizedLabel} />
               </PieChart>
             </div>
 

@@ -1,6 +1,5 @@
 import React from "react";
-import { connect } from 'react-redux';
-import { dimming, undimming } from '../actions/DimmerAction';
+import { Link } from 'react-router';
 
 class BadgeHistoryItem extends React.Component {
     constructor(props, context) {
@@ -30,6 +29,17 @@ class BadgeHistoryItem extends React.Component {
           right: "20px",
           top: "20px",
           height: "2em"
+        };
+
+        let buttonStyle = {
+          "position": "absolute",
+          "right": "20px",
+          "top": "20px",
+          "height": "2em",
+          "lineHeight": "2em",
+          "backgroundColor": "#6C3AC0",
+          "padding": "0px 10px",
+          "color": "#FFFFFF"
         };
 
         const getHistoryDate = () => {
@@ -74,22 +84,13 @@ class BadgeHistoryItem extends React.Component {
             <span style={titleStyle}>{this.props.menuName}</span>
             <span style={descStyle}>{getHistoryDate()} | {this.props.storeName}</span>
             {
-              (this.props.isValidated)?
-              <img style={badgeStyle} src="//placehold.it/30x30?text=뱃지" />:<button style={badgeStyle} onClick={this.props.onOpenValidate}>인증하기</button>
+              (this.props.isValidated) ?
+              <img style={badgeStyle} src="//placehold.it/30x30?text=뱃지" /> :
+              <Link to={"validate"} style={buttonStyle}>인증하기</Link>
             }
           </li>
         );
     }
 }
-
-let mapDispatchToProps = (dispatch) => {
-    return {
-        onOpenValidate: () => {
-            dispatch(dimming());
-        }
-    };
-};
-
-BadgeHistoryItem = connect(undefined, mapDispatchToProps)(BadgeHistoryItem);
 
 export default BadgeHistoryItem;

@@ -4,31 +4,19 @@ export const mypage = (state, action) => {
     switch(action.type) {
         case PREV_MONTH:
             return Object.assign({}, state, {
-              visible: state.visible?false:true
             });
         case NEXT_MONTH:
             return Object.assign({}, state, {
-              visible: true
             });
         case OPEN_VALIDATE:
             return Object.assign({}, state, {
-              validate: {
-                visible: true
-              }
+              alertVisible: true
             });
         case CLOSE_VALIDATE:
             return Object.assign({}, state, {
-              validate: {
-                visible: false
-              }
+              alertVisible: false
             });
         default:
             return state;
-    }
-};
-
-export const MyPageReducer = (state={}, action) => {
-    return {
-        mypage: mypage(state.validate, action)
     }
 };
