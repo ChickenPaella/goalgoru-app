@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import FontAwesome from 'react-fontawesome';
+import { dimming, undimming } from '../actions/DimmerAction';
 
 class DetailMenuItem extends React.Component {
     render() {
@@ -38,7 +40,7 @@ class DetailMenuItem extends React.Component {
             fontWeight: 500,
             color: "#FF4B4B"
         }
-        return <li style={style}>
+        return <li style={style} onClick={this.props.onOpenPopup}>
             <div style={textWrapperStyle}>
                 <div style={nameStyle}>{this.props.name}<span style={bestStyle}>{this.props.best?"BEST":""}</span></div>
                 <div style={descriptionStyle}><span>{this.props.type}</span>&nbsp;|&nbsp;<span>{this.props.calorie}kcal</span></div>
@@ -49,5 +51,21 @@ class DetailMenuItem extends React.Component {
         </li>
     }
 }
+
+let mapStateToProps = () => {
+    return {
+
+    }
+}
+
+let mapDispatchToProps = (dispatch) => {
+    return {
+        onOpenPopup: () => {
+            dispatch(dimming());
+        }
+    }
+}
+
+DetailMenuItem = connect(mapStateToProps, mapDispatchToProps)(DetailMenuItem);
 
 export default DetailMenuItem;

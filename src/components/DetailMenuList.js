@@ -1,4 +1,6 @@
 import React from 'react';
+import { dimming, undimming } from '../actions/DimmerAction';
+import { connect } from 'react-redux';
 import DetailMenuItem from './DetailMenuItem';
 
 class DetailMenuList extends React.Component {

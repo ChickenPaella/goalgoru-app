@@ -2,6 +2,7 @@ import React from 'react';
 import { changeTitle, setActionBarBackward, setActionBarHome, setActionBarTransparent } from '../actions/NavigationAction';
 import { connect } from 'react-redux';
 import DetailMenuList from '../components/DetailMenuList';
+import DetailMenuPopup from '../components/DetailMenuPopup';
 
 class DetailContainer extends React.Component {
     constructor(args) {
@@ -21,23 +22,25 @@ class DetailContainer extends React.Component {
         this.props.onSetActionBarBackward();
         this.props.onSetActionBarTransparent(true);
     }
+
     componentWillUnmount() {
         this.props.onSetActionBarTransparent(false);
         window.removeEventListener('scroll', this.handleScroll);
     }
+
     handleScroll(e) {
         let offset = 210 - 50;  // ImageHeight - NaviHeight
         if((e.target.scrollingElement.scrollTop > offset) && !this.state.below ) {
             this.setState({below: true});
             this.props.onSetActionBarTransparent(false);
             this.props.onChangeTitle(this.state.name);
-            console.log(this.state.name);
         } else if((e.target.scrollingElement.scrollTop <= offset) && this.state.below ) {
             this.setState({below: false});
             this.props.onSetActionBarTransparent(true);
             this.props.onChangeTitle("");
         }
     }
+
     render() {
         let imageWrapperStyle = {
             position: "relative",
