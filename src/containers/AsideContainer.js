@@ -17,7 +17,7 @@ class AsideContainer extends React.Component {
             backgroundColor: "#ffffff",
             borderWidth: "0px 1px 0px 0px",
             borderStyle: "solid",
-            borderColor: "#dfdfdf"
+            borderColor: "#888888"
         }
 
         let closeButtonStyle = {
