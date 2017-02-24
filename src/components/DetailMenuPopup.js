@@ -9,14 +9,14 @@ class DetailMenuPopup extends React.Component {
         super(args);
         this.state = {
             nutri: [
-                {name: "탄수화물", unit: "g", amount: 5},
-                {name: "지방", unit: "g", amount: 5},
-                {name: "단백질", unit: "g", amount: 5},
-                {name: "식이섬유", unit: "g", amount: 5},
-                {name: "콜레스테롤", unit: "g", amount: 5},
-                {name: "비타민", unit: "g", amount: 5},
-                {name: "나트륨", unit: "g", amount: 5},
-                {name: "철분", unit: "g", amount: 5}
+                {name: "탄수화물", major:true, unit: "g", amount: 5},
+                {name: "지방", major:false, unit: "g", amount: 5},
+                {name: "단백질", major:false, unit: "g", amount: 5},
+                {name: "식이섬유", major:false, unit: "g", amount: 5},
+                {name: "콜레스테롤", major:false, unit: "g", amount: 5},
+                {name: "비타민", major:false, unit: "g", amount: 5},
+                {name: "나트륨", major:false, unit: "g", amount: 5},
+                {name: "철분", major:false, unit: "g", amount: 5}
             ]
         }
     }
@@ -31,25 +31,24 @@ class DetailMenuPopup extends React.Component {
             top: 0,
             zIndex: 1001,
             width: "80%",
-            height: "60%",
-            margin: "30% 10%",
+            margin: "10% 10%",
             backgroundColor: "#FFFFFF",
             borderRadius: "5px"
         }
         let headerStyle = {
-            backgroundColor: "#FFF45D",
             borderTopLeftRadius: "5px",
             borderTopRightRadius: "5px",
-            padding: "28px 0 22px 0",
+            padding: "36px 0 30px 0",
+            margin: "0 24px",
             textAlign: "center",
             fontSize: "24px",
-            fontStyle: "italic"
+            fontStyle: "italic",
         }
         let labelStyle = {
 
         }
         let amountStyle = {
-
+            float: "right"
         }
         let closeButtonStyle = {
             position: "absolute",
@@ -58,16 +57,36 @@ class DetailMenuPopup extends React.Component {
         }
         let listStyle = {
             listStyle: "none",
-            padding: 0,
-            margin: 0
+            padding: "8px 0",
+            margin: 0,
+            borderTop: "1px solid #efefef"
+        }
+        let listItemStyle = {
+            padding: "9px 0px",
+            margin: "0px 24px",
+            fontWeight: 500
+        }
+        let listMajorItemStyle = Object.assign({}, listItemStyle, {color: "#FF4B4B"});
+        let buttonStyle = {
+            display: "block",
+            textAlign: "center",
+            width: "100%",
+            height: "83px",
+            backgroundColor: "#fdf51e",
+            border: "none",
+            borderBottomLeftRadius: "5px",
+            borderBottomRightRadius: "5px",
+            fontSize: "17px",
+            color: "#444444",
         }
         return <div style={style}>
             <div style={headerStyle}>{this.props.title}</div>
             <ul style={listStyle}>
             {this.state.nutri.map((n, i) => {
-                return <li key={i}><span style={labelStyle}>{n.name}({n.unit})</span><span style={amountStyle}>{n.amount}</span></li>
+                return <li style={n.major?listMajorItemStyle:listItemStyle} key={i}><span style={labelStyle}>{n.name}({n.unit})</span><span style={amountStyle}>{n.amount}</span></li>
             })}
             </ul>
+            <button style={buttonStyle}>잘 먹겠습니다!</button>
             <FontAwesome style={closeButtonStyle} name="times" onClick={this.props.onClosePopup} />
         </div>
     }
