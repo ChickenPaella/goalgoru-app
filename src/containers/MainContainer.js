@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import FontAwesome from 'react-fontawesome';
-import { changeTitle } from '../actions/NavigationAction';
+import { changeTitle, setActionBarBase } from '../actions/NavigationAction';
 import ImageSlider from '../components/ImageSlider';
 import MenuList from '../components/MenuList';
 
@@ -13,13 +13,15 @@ class MainContainer extends React.Component {
             locationName: "서울시 노원구 동원로"
         };
     }
+    
     componentDidMount() {
         this.props.onChangeTitle("고루고루");
-
+        this.props.onSetActionBarBase();
     }
 
     render() {
         let style = {
+            paddingTop: "50px",
             backgroundColor: "#6C3AC0"
         }
         let linkWrapperStyle = {
@@ -52,6 +54,9 @@ let mapDispatchToProps = (dispatch) => {
     return {
         onChangeTitle: (title) => {
             dispatch(changeTitle(title));
+        },
+        onSetActionBarBase: () => {
+            dispatch(setActionBarBase());
         }
     };
 };
