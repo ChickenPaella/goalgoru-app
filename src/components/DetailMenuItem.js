@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import FontAwesome from 'react-fontawesome';
 import { dimming, undimming } from '../actions/DimmerAction';
+import { openPopup } from '../actions/PopupAction';
 
 class DetailMenuItem extends React.Component {
     render() {
@@ -58,10 +59,11 @@ let mapStateToProps = () => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
+let mapDispatchToProps = (dispatch, props) => {
     return {
         onOpenPopup: () => {
             dispatch(dimming());
+            dispatch(openPopup(props.name));
         }
     }
 }

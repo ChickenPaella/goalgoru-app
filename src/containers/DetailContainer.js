@@ -42,6 +42,9 @@ class DetailContainer extends React.Component {
     }
 
     render() {
+        let style = {
+            position: 'relative'
+        }
         let imageWrapperStyle = {
             position: "relative",
             height: "210px",
@@ -73,7 +76,7 @@ class DetailContainer extends React.Component {
             left: "24px",
             color: "#FFFFFF"
         }
-        return <div>
+        return <div style={style}>
             <div style={imageWrapperStyle}>
                 <div style={imageDimmerStyle}></div>
                 <div style={textWrapperStyle}>
@@ -82,6 +85,7 @@ class DetailContainer extends React.Component {
                 </div>
             </div>
             <DetailMenuList />
+            <DetailMenuPopup visible={false} />
         </div>
     }
 }
