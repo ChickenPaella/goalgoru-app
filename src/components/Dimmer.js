@@ -10,6 +10,7 @@ class Dimmer extends React.Component {
             top: "0px",
             width: "100%",
             height: "100%",
+            zIndex: 999,
             display: this.props.dimmed?"block":"none"
         }
 
