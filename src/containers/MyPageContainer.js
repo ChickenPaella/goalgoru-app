@@ -1,9 +1,17 @@
 import React from 'react';
+<<<<<<< HEAD
 import MyNutritionStatus from '../components/MyNutritionStatus';
 import BadgeHistory from '../components/BadgeHistory';
 import Validate from '../components/Validate';
+=======
+import { connect } from 'react-redux';
+import { changeTitle } from '../actions/NavigationAction';
+>>>>>>> master
 
 class MyPageContainer extends React.Component {
+    componentDidMount() {
+        this.props.onChangeTitle("나의 상태");
+    }
     render() {
         return (
           <div>
@@ -14,5 +22,15 @@ class MyPageContainer extends React.Component {
         );
     }
 }
+
+let mapDispatchToProps = (dispatch) => {
+    return {
+        onChangeTitle: (title) => {
+            dispatch(changeTitle(title));
+        }
+    };
+};
+
+MyPageContainer = connect(undefined, mapDispatchToProps)(MyPageContainer);
 
 export default MyPageContainer;
