@@ -19,7 +19,6 @@ class Dimmer extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-    // console.log(state);
     return {
         dimmed: state.dimmer.dimmed
     };
