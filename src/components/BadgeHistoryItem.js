@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from 'react-redux';
+import { dimming, undimming } from '../actions/DimmerAction';
 
 class BadgeHistoryItem extends React.Component {
     constructor(props, context) {
@@ -72,14 +74,23 @@ class BadgeHistoryItem extends React.Component {
             <span style={titleStyle}>{this.props.menu.name}</span>
             <span style={descStyle}>{getHistoryDate()} | {this.props.store.name}</span>
             {
-              (this.props.isValidated)
-              ?<img style={badgeStyle} src="//placehold.it/30x30?text=뱃지" />
-              :<button style={badgeStyle}>인증하기</button>
+              (this.props.isValidated)?
+              <img style={badgeStyle} src="//placehold.it/30x30?text=뱃지" />:<button style={badgeStyle} onClick={this.props.onOpenValidate}>인증하기</button>
             }
           </li>
         );
     }
 }
+
+let mapDispatchToProps = (dispatch) => {
+    return {
+        onOpenValidate: () => {
+            dispatch(dimming());
+        }
+    };
+};
+
+BadgeHistoryItem = connect(undefined, mapDispatchToProps)(BadgeHistoryItem);
 
 BadgeHistoryItem.propTypes = {
     menu: React.PropTypes.object.isRequired,

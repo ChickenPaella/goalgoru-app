@@ -1,23 +1,34 @@
-import { PREV_WEEK, NEXT_WEEK } from "../actions/MyPageAction.js";
+import { PREV_MONTH, NEXT_MONTH, OPEN_VALIDATE, CLOSE_VALIDATE } from "../actions/MyPageAction.js";
 
-export const display = (state, action) => {
+export const mypage = (state, action) => {
     switch(action.type) {
-        case PREV_WEEK:
+        case PREV_MONTH:
             return Object.assign({}, state, {
-                visible: state.visible?false:true
+              visible: state.visible?false:true
             });
-        case NEXT_WEEK:
+        case NEXT_MONTH:
             return Object.assign({}, state, {
+              visible: true
+            });
+        case OPEN_VALIDATE:
+            return Object.assign({}, state, {
+              validate: {
                 visible: true
+              }
+            });
+        case CLOSE_VALIDATE:
+            return Object.assign({}, state, {
+              validate: {
+                visible: false
+              }
             });
         default:
             return state;
     }
 };
 
-
-export const AsideReducer = (state={}, action) => {
+export const MyPageReducer = (state={}, action) => {
     return {
-        display: display(state.visible, action)
-    };
+        mypage: mypage(state.validate, action)
+    }
 };

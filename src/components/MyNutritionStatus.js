@@ -7,8 +7,7 @@ class MyNutritionStatus extends React.Component {
 
         this.state = {
           year: 2017,
-          month: 2,
-          week: 3
+          month: 2
         };
     }
 
@@ -26,12 +25,13 @@ class MyNutritionStatus extends React.Component {
 
         let titleStyle = {
           display: "block",
-          fontWeight: "bold"
+          fontWeight: "bold",
+          fontSize: "1.2em"
         };
 
         let descStyle = {
           display: "block",
-          fontSize: "0.7em"
+          fontSize: "0.8em"
         };
 
         let navButtonStyle = {
@@ -67,8 +67,7 @@ class MyNutritionStatus extends React.Component {
               <FontAwesome name="angle-left" style={navButtonStyle} />
             </div>
 
-            <span style={titleStyle}>{this.state.year}년 {this.state.month}월 {this.state.week}째 주</span>
-            <span>(2017.02.12. ~ 2017.02.18.)</span>
+            <span style={titleStyle}>{this.state.year}년 {this.state.month}월</span>
             <div><img style={chartStyle} src="//placehold.it/300x300?text=CHART AREA" /></div>
 
             <span style={descStyle}>식사 인증 가능기간은 식사일로부터 일주일입니다.<br />미인증 식사 개수: 1개</span>
