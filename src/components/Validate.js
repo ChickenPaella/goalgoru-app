@@ -8,6 +8,15 @@ class Validate extends React.Component {
 
     render() {
       let style = {
+        "position": "absolute",
+        "left": "5%",
+        "top": "5%",
+        "width": "90%",
+        "height": "90%",
+        "backgroundColor": "#FFFFFF",
+
+
+        "display": "none"
       };
 
       const getDate = () => {

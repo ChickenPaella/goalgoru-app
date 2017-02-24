@@ -1,6 +1,5 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
-import Validate from './Validate';
 
 class MyNutritionStatus extends React.Component {
     constructor(props, context) {
@@ -77,7 +76,6 @@ class MyNutritionStatus extends React.Component {
             <div style={nextButtonWrapStyle}>
               <FontAwesome name="angle-right" style={navButtonStyle} />
             </div>
-            <Validate />
           </div>
         );
     }
