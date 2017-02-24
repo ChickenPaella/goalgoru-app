@@ -1,19 +1,21 @@
 import React from 'react';
-import MyNutritionStatus from '../components/MyNutritionStatus';
-import BadgeHistory from '../components/BadgeHistory';
 import Validate from '../components/Validate';
 import { connect } from 'react-redux';
 import { changeTitle } from '../actions/NavigationAction';
 
-class MyPageContainer extends React.Component {
-    componentDidMount() {
-        this.props.onChangeTitle("나의 상태");
+class ValidateContainer extends React.Component {
+    constructor(props) {
+        super(props);
     }
+
+    componentDidMount() {
+        this.props.onChangeTitle("인증하기");
+    }
+
     render() {
-        return (
+        return(
           <div>
-            <MyNutritionStatus />
-            <BadgeHistory />
+            <Validate />
           </div>
         );
     }
@@ -27,6 +29,6 @@ let mapDispatchToProps = (dispatch) => {
     };
 };
 
-MyPageContainer = connect(undefined, mapDispatchToProps)(MyPageContainer);
+ValidateContainer = connect(undefined, mapDispatchToProps)(ValidateContainer);
 
-export default MyPageContainer;
+export default ValidateContainer;

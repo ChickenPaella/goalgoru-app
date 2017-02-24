@@ -1,14 +1,26 @@
 import React from 'react';
+import StarStat from '../components/StarStat';
+import StoreList from '../components/StoreList';
 import { connect } from 'react-redux';
 import { changeTitle } from '../actions/NavigationAction';
 
 class RewardContainer extends React.Component {
-    componentDidMount() {
-        this.props.onChangeTitle("포인트몰");
-    }
-    render() {
-        return <h1>Reward</h1>
-    }
+  componentDidMount() {
+      this.props.onChangeTitle("포인트몰");
+  }
+
+  render() {
+    let style = {
+      "backgroundColor": "#EFEFEF"
+    };
+
+    return (
+      <div style={style}>
+        <StarStat />
+        <StoreList />
+      </div>
+    );
+  }
 }
 
 let mapDispatchToProps = (dispatch) => {

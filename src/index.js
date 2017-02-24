@@ -10,6 +10,8 @@ import MyPageContainer from './containers/MyPageContainer';
 import SearchContainer from './containers/SearchContainer';
 import LocationContainer from './containers/LocationContainer';
 import DetailContainer from './containers/DetailContainer';
+import ValidateContainer from './containers/ValidateContainer';
+import CardInfoContainer from './containers/CardInfoContainer';
 import AppReducer from './reducers/AppReducer';
 import DimmerReducer from './reducers/DimmerReducer';
 
@@ -25,8 +27,10 @@ ReactDOM.render(
                 <Route path="/search" component={SearchContainer} />
                 <Route path="/location" component={LocationContainer} />
                 <Route path="/detail/:id" component={DetailContainer} />
+                <Route path="/validate" component={ValidateContainer} />
+                <Route path="/card" component={CardInfoContainer} />
             </Route>
         </Router>
     </Provider>,
     document.getElementById('app')
-)
+);
