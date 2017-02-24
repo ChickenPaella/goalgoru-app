@@ -1,12 +1,9 @@
 import React from 'react';
-<<<<<<< HEAD
 import MyNutritionStatus from '../components/MyNutritionStatus';
 import BadgeHistory from '../components/BadgeHistory';
 import Validate from '../components/Validate';
-=======
 import { connect } from 'react-redux';
 import { changeTitle } from '../actions/NavigationAction';
->>>>>>> master
 
 class MyPageContainer extends React.Component {
     componentDidMount() {
