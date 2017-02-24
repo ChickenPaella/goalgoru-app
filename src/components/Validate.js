@@ -33,6 +33,45 @@ class Validate extends React.Component {
       };
 
       let openedAlertStyle = {
+        "zIndex": "1000",
+        "width": "70%",
+        "left": "50%",
+        "marginLeft": "-35%",
+        "height": "200px",
+        "top": "50%",
+        "marginTop": "-100px",
+        "backgroundColor": "#FFFFFF",
+        "display": "block",
+        "position": "absolute",
+        "boxSizing": "border-box",
+        "padding": "10px",
+        "borderRadius": "10px"
+      };
+
+      let alertTitleStyle = {
+        "display": "block",
+        "width": "100%",
+        "fontSize": "1.2em",
+        "fontWeight": "bold",
+        "marginBottom": "10px",
+        "textAlign": "center"
+      };
+
+      let alertDescStyle = {
+
+      };
+
+      let alertButtonStyle = {
+        "position": "absolute",
+        "left": "0px",
+        "bottom": "0px",
+        "width": "100%",
+        "height": "3em",
+        "lineHeight": "3em",
+        "backgroundColor": "#6C3AC0",
+        "color": "#FFFFFF",
+        "border": "0px",
+        "borderRadius": "0px 0px 10px 10px"
       };
 
       let closedAlertStyle = {
@@ -85,7 +124,12 @@ class Validate extends React.Component {
 
           <button style={buttonStyle} onClick={this.props.onOpenValidate}>제출하고 뱃지 받기</button>
 
-          <div style={this.props.alertVisible?{display: "block"}:{display: "none"}}>Hello</div>
+          <div style={this.props.alertVisible?openedAlertStyle:closedAlertStyle}>
+            <span style={alertTitleStyle}>뱃지를 받기 전에!</span>
+            <span style={alertDescStyle}>실제 식사와 내용이 다를 경우 이용에 불편을 겪을 수 있습니다.<br />
+            올바른 정보인지 다시 한 번 확인해주세요.</span>
+            <button style={alertButtonStyle} onClick={this.props.onCloseValidate}>확인</button>
+          </div>
         </div>
       );
     }
@@ -99,10 +143,14 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        onOpenValidate: () => {
-            dispatch(dimming());
-            dispatch(openValidate());
-        }
+      onOpenValidate: () => {
+          dispatch(dimming());
+          dispatch(openValidate());
+      },
+      onCloseValidate: () => {
+          dispatch(closeValidate());
+          dispatch(undimming());
+      }
     };
 };
 
