@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router'
 
 class MenuItem extends React.Component {
     constructor(args) {
@@ -13,7 +14,8 @@ class MenuItem extends React.Component {
         }
         let titleStyle = {
             fontSize: "16px",
-            fontWeight: "300"
+            fontWeight: "300",
+            color: "#444444"
         }
         let imageWrapperStyle = {
             float: "left",
@@ -39,16 +41,21 @@ class MenuItem extends React.Component {
             fontStyle: "italic"
         }
         let categoryStyle = {
-            fontWeight:"500"
+            fontWeight:"500",
+        }
+        let linkStyle = {
+            textDecoration: "none"
         }
         return <li style={style}>
-            <div style={imageWrapperStyle}><img style={imageStyle} src={this.props.imageUrl} /></div>
-            <div style={contentWrapperStyle}>
-                <div style={titleStyle}>{this.props.title}</div>
-                <div style={descriptionStyle}>
-                    <span style={categoryStyle}>{this.props.category}</span>&nbsp;/&nbsp;<span>{this.props.distance}km</span>
+            <Link to={"/detail/"+this.props.id} style={linkStyle}>
+                <div style={imageWrapperStyle}><img style={imageStyle} src={this.props.imageUrl} /></div>
+                <div style={contentWrapperStyle}>
+                    <div style={titleStyle}>{this.props.title}</div>
+                    <div style={descriptionStyle}>
+                        <span style={categoryStyle}>{this.props.category}</span>&nbsp;/&nbsp;<span>{this.props.distance}km</span>
+                    </div>
                 </div>
-            </div>
+            </Link>
         </li>
     }
 }
