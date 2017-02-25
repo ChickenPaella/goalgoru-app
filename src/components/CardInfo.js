@@ -52,7 +52,7 @@ class CardInfo extends React.Component {
         "width": "100%",
         "margin": "auto",
         "display": "block",
-        "fontSize": "1.2em",
+        "fontSize": "1.4em",
         "boxSizing": "border-box",
         "fontWeight": "300",
         "padding": "0px",
@@ -68,7 +68,7 @@ class CardInfo extends React.Component {
       let cardOwnerStyle = {
         "lineHeight": "2em",
         "fontSize": "0.8em",
-        "marginTop": "40px"
+        "marginTop": "65px"
       };
 
       let cardOwnerImageStyle = {
@@ -86,15 +86,17 @@ class CardInfo extends React.Component {
 
       let descTitleStyle = {
         "fontStyle": "italic",
-        "color": "#C9BBFD",
-        "fontWeight": "bold"
+        "color": "#c9b9ff",
+        "fontWeight": "bold",
+        "marginBottom": "10px",
+        "display": "block"
       };
 
       let contentsStyle = {
         "fontSize": "0.8em",
-        "color": "#C9BBFD"
+        "color": "#a187f9"
       };
-      let descContentsStyle = Object.assign({}, contentsStyle);
+      let descContentsStyle = Object.assign({}, contentsStyle, {"margin": "0px", "lineHeight": "1.6em"});
       let contactStyle = Object.assign({}, contentsStyle);
 
       let buttonStyle = {
