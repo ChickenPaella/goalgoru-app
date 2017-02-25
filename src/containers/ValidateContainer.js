@@ -22,7 +22,7 @@ class ValidateContainer extends React.Component {
     render() {
         let style = {
           "padding": "50px 20px 44px 20px",
-          "backgroundColor": "#6C3AC0",
+          "backgroundColor": "#5836c9",
           "boxSizing": "border-box",
           "minHeight": this.state.height
         };
