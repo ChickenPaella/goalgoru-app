@@ -7,7 +7,6 @@ const initState = {
 }
 
 export default (state=initState, action) => {
-    // console.log("PopupReducer", state, action);
     switch(action.type) {
         case OPEN_POPUP:
             return Object.assign({}, state, {
