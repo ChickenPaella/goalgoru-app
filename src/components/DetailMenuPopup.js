@@ -57,7 +57,7 @@ class DetailMenuPopup extends React.Component {
             right: "12px"
         }
         let listStyle = {
-            height:"280px",
+            height:"288px",
             listStyle: "none",
             padding: "8px 0",
             margin: 0,
