@@ -1,6 +1,6 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
-import { PieChart, Pie } from 'recharts';
+import { PieChart, Pie, Cell } from 'recharts';
 import { connect } from 'react-redux';
 import { prevMonth, nextMonth } from '../actions/MyPageAction';
 
@@ -9,7 +9,8 @@ class MyNutritionStatus extends React.Component {
         super(props, context);
 
         this.state = {
-          "width": props.width
+          "width": props.width,
+          "unauthNumber": 1
         };
     }
 
@@ -21,7 +22,9 @@ class MyNutritionStatus extends React.Component {
         let style = {
           textAlign: "center",
           position: "relative",
-          padding: "20px 40px"
+          padding: "20px 40px",
+          color: "#FFFFFF",
+          backgroundColor: "#6C3AC0"
         };
 
         let chartStyle = {
@@ -31,12 +34,18 @@ class MyNutritionStatus extends React.Component {
 
         let titleStyle = {
           display: "block",
-          fontWeight: "bold",
-          fontSize: "1.2em"
+          fontSize: "1.2em",
+          fontStyle: "italic"
+        };
+
+        let unauthStyle = {
+          display: "block",
+          marginBottom: "10px"
         };
 
         let descStyle = {
           display: "block",
+          color: "#B8AFE3",
           fontSize: "0.8em"
         };
 
@@ -49,35 +58,41 @@ class MyNutritionStatus extends React.Component {
           marginTop: "-10px"
         };
 
-        let prevButtonWrapStyle = {
+        let buttonWrapStyle = {
           position: "absolute",
           textAlign: "center",
           height: "100%",
           width: "40px",
           top: "0px",
-          left: "0px"
+          color: "#FFFFFF"
         };
-
-        let nextButtonWrapStyle = {
-          position: "absolute",
-          textAlign: "center",
-          height: "100%",
-          width: "40px",
-          top: "0px",
-          right: "0px"
-        };
+        let prevButtonWrapStyle = Object.assign({}, buttonWrapStyle, {"left":  "0px"});
+        let nextButtonWrapStyle = Object.assign({}, buttonWrapStyle, {"right": "0px"});
 
         /* Graph 처리 */
-        let data = [{name: '단', value: 400}, {name: '탄', value: 300}, {name: '지', value: 300}];
+        let data = [{name: '단', value: 90}, {name: '탄', value: 5}, {name: '지', value: 5}];
+        const COLORS = ['#fcf41e', '#ff8b36', '#ffffff'];
         const RADIAN = Math.PI / 180;
-        const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
-         	const radius = outerRadius * 1.1;
+        const percentLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+         	const radius = outerRadius * 0.5;
           const x = cx + radius * Math.cos(-midAngle * RADIAN);
           const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
           return (
-            <text x={x} y={y} fill="#6C3AC0" dominantBaseline="central">
-              {`${data[index].name + ": " + (percent * 100).toFixed(0)}%`}
+            <text x={x} y={y} fill="#333" dominantBaseline="central">
+              {`${(percent * 100).toFixed(0)}%`}
+            </text>
+          );
+        };
+
+        const nameLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+          const radius = outerRadius * 0.5;
+          const x = cx + radius * Math.cos(-midAngle * RADIAN);
+          const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+          return (
+            <text x={x} y={y} fill="#333" dominantBaseline="central">
+              {`${(percent * 100).toFixed(0)}%`}
             </text>
           );
         };
@@ -90,12 +105,19 @@ class MyNutritionStatus extends React.Component {
 
             <span style={titleStyle}>{this.props.year}년 {this.props.month + 1}월</span>
             <div style={{"textAlign": "center"}}>
-              <PieChart width={this.state.width - 100} height={this.state.width - 100} style={{"display": "inline-block"}}>
-                <Pie data={data} cx="50%" cy="50%" outerRadius={this.state.width / 4} innerRadius={this.state.width / 4 - 20} fill="#F3EA52" label={renderCustomizedLabel} />
+              <PieChart width={this.state.width / 2} height={this.state.width / 2} style={{"display": "inline-block", "margin": "20px"}}>
+                <Pie data={data} outerRadius={this.state.width / 4} fill="#F3EA52" label={percentLabel} labelLine={false} stroke="none">
+                  {data.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)}
+                </Pie>
               </PieChart>
             </div>
 
-            <span style={descStyle}>식사 인증 가능기간은 식사일로부터 일주일입니다.<br />미인증 식사 개수: 1개</span>
+            <span style={unauthStyle}>
+              미인증 식사 개수: {this.state.unauthNumber}개
+            </span>
+            <span style={descStyle}>
+              식사 인증 가능 기간은<br />식사일로부터 일주일입니다.
+            </span>
 
             <div style={nextButtonWrapStyle} onClick={this.props.onNextMonth}>
               <FontAwesome name="angle-right" style={navButtonStyle} />

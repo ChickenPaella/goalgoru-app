@@ -50,13 +50,9 @@ class Validate extends React.Component {
         "borderRadius": "10px"
       };
 
-      let openedValidateConfirmStyle = Object.assign({}, alertStyle);
-      openedValidateConfirmStyle.height = "200px";
-      openedValidateConfirmStyle.marginTop = "-100px";
+      let openedValidateConfirmStyle = Object.assign({}, alertStyle, {"height": "200px", "marginTop": "-100px"});
 
-      let openedBadgeAcquiredStyle = Object.assign({}, alertStyle);
-      openedBadgeAcquiredStyle.height = "400px";
-      openedBadgeAcquiredStyle.marginTop = "-200px";
+      let openedBadgeAcquiredStyle = Object.assign({}, alertStyle, {"height": "400px", "marginTop": "-200px"});
 
       let alertTitleStyle = {
         "display": "block",

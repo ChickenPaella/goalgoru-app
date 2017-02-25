@@ -51,6 +51,7 @@ class StarStat extends React.Component {
         "color": "#FC4356",
         "width": "50px",
         "fontSize": "1.5em",
+        "fontWeight": "bold",
         "textAlign": "center"
       };
 
