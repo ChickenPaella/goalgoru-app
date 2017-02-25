@@ -8,6 +8,7 @@ import { changeTitle, setActionBarBase } from '../actions/NavigationAction';
 class MyPageContainer extends React.Component {
     componentDidMount() {
         this.props.onChangeTitle("나의 상태");
+        this.props.setActionBarBase();
     }
 
     render() {
@@ -29,7 +30,9 @@ let mapDispatchToProps = (dispatch) => {
     return {
         onChangeTitle: (title) => {
             dispatch(changeTitle(title));
-            dispatch(setActionBarBase());
+        },
+        setActionBarBase: () => {
+          dispatch(setActionBarBase());
         }
     };
 };

@@ -10,6 +10,7 @@ class ValidateContainer extends React.Component {
 
     componentDidMount() {
         this.props.onChangeTitle("인증하기");
+        this.props.setActionBar();
     }
 
     render() {
@@ -30,7 +31,9 @@ let mapDispatchToProps = (dispatch) => {
     return {
         onChangeTitle: (title) => {
             dispatch(changeTitle(title));
-            dispatch(setActionBarOnlyBackward());
+        },
+        setActionBar: () => {
+          dispatch(setActionBarOnlyBackward());
         }
     };
 };
