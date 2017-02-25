@@ -11,6 +11,7 @@ class RewardContainer extends React.Component {
 
   render() {
     let style = {
+      "marginTop": "50px",
       "backgroundColor": "#EFEFEF"
     };
 

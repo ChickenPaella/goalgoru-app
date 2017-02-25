@@ -30,6 +30,13 @@ export function setActionBarHome() {
     }
 }
 
+export function setActionBarOnlyBackward() {
+    return {
+        type: CHANGE_ACTION_BAR_MODE,
+        mode: 3
+    }
+}
+
 export function setActionBarTransparent(transparent) {
     return {
         type: CHANGE_ACTION_BAR_TRANSPARENT,

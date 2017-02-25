@@ -1,27 +1,19 @@
 import { combineReducers } from 'redux';
-import { display } from './AsideReducer';
-import { dimmer } from './DimmerReducer';
-import { navi } from './NavigationReducer';
-import { mypage } from './MyPageReducer';
-import { popup } from './PopupReducer';
+import AsideReducer from './AsideReducer';
+import DimmerReducer from './DimmerReducer';
+import NavigationReducer from './NavigationReducer';
+import MyPageReducer from './MyPageReducer';
+import PopupReducer from './PopupReducer';
+import SearchReducer from './SearchReducer';
 
-const initState = {
-    aside: {},
-    dimmer: {},
-    navi: {},
-    mypage: {},
-    popup: {}
-}
 
-const AppReducer = (state=initState, action) => {
-    console.log(action);
-    return {
-        aside: Object.assign({}, display(state.aside, action)),
-        dimmer: Object.assign({}, dimmer(state.dimmer, action)),
-        navi: Object.assign({}, navi(state.navi, action)),
-        mypage: Object.assign({}, mypage(state.mypage, action)),
-        popup: Object.assign({}, popup(state.popup, action))
-    }
-}
+const AppReducer = combineReducers({
+    aside: AsideReducer,
+    dimmer: DimmerReducer,
+    navi: NavigationReducer,
+    mypage: MyPageReducer,
+    popup: PopupReducer,
+    search: SearchReducer
+});
 
 export default AppReducer;

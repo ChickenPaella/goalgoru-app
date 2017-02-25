@@ -1,34 +1,40 @@
-import { PREV_MONTH, NEXT_MONTH, OPEN_VALIDATE, CLOSE_VALIDATE } from "../actions/MyPageAction.js";
+import { PREV_MONTH, NEXT_MONTH,
+         OPEN_VALIDATE_CONFIRM, CLOSE_VALIDATE_CONFIRM,
+         OPEN_BADGE_ACQUIRED, CLOSE_BADGE_ACQUIRED } from "../actions/MyPageAction.js";
 
-export const mypage = (state, action) => {
+let initState = {
+  date: new Date(),
+  validateConfirmVisible: false,
+  badgeAcquiredVisible: false
+};
+
+export default (state=initState, action) => {
     switch(action.type) {
         case PREV_MONTH:
             return Object.assign({}, state, {
-              visible: state.visible?false:true
+              date: state.date.setMonth(state.date.getMonth() - 1)
             });
         case NEXT_MONTH:
             return Object.assign({}, state, {
-              visible: true
+              date: state.date.setMonth(state.date.getMonth() + 1)
             });
-        case OPEN_VALIDATE:
+        case OPEN_VALIDATE_CONFIRM:
             return Object.assign({}, state, {
-              validate: {
-                visible: true
-              }
+              validateConfirmVisible: true
             });
-        case CLOSE_VALIDATE:
+        case CLOSE_VALIDATE_CONFIRM:
             return Object.assign({}, state, {
-              validate: {
-                visible: false
-              }
+              validateConfirmVisible: false
+            });
+        case OPEN_BADGE_ACQUIRED:
+            return Object.assign({}, state, {
+              badgeAcquiredVisible: true
+            });
+        case CLOSE_BADGE_ACQUIRED:
+            return Object.assign({}, state, {
+              badgeAcquiredVisible: false
             });
         default:
             return state;
-    }
-};
-
-export const MyPageReducer = (state={}, action) => {
-    return {
-        mypage: mypage(state.validate, action)
     }
 };

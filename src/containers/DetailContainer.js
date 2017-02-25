@@ -18,9 +18,7 @@ class DetailContainer extends React.Component {
     componentDidMount() {
         window.scrollTo(0, 0);
         window.addEventListener('scroll', this.handleScroll);
-        this.props.onChangeTitle("");
-        this.props.onSetActionBarBackward();
-        this.props.onSetActionBarTransparent(true);
+        this.props.onInit();
     }
 
     componentWillUnmount() {
@@ -96,6 +94,11 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {
+        onInit: () => {
+            dispatch(changeTitle(""));
+            dispatch(setActionBarTransparent(true));
+            dispatch(setActionBarBackward());
+        },
         onSetActionBarBackward: () => {
             dispatch(setActionBarBackward());
         },

@@ -9,9 +9,14 @@ class MyPageContainer extends React.Component {
     componentDidMount() {
         this.props.onChangeTitle("나의 상태");
     }
+
     render() {
+        let style = {
+          "marginTop": "50px"
+        };
+
         return (
-          <div>
+          <div style={style}>
             <MyNutritionStatus />
             <BadgeHistory />
           </div>

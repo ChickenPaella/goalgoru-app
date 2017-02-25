@@ -13,8 +13,12 @@ class ValidateContainer extends React.Component {
     }
 
     render() {
+        let style = {
+          "marginTop": "50px"
+        };
+
         return(
-          <div>
+          <div style={style}>
             <Validate />
           </div>
         );

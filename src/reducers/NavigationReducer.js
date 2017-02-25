@@ -2,10 +2,11 @@ import { CHANGE_TITLE, CHANGE_ACTION_BAR_MODE, CHANGE_ACTION_BAR_TRANSPARENT } f
 
 let initState = {
     title: "고루고루",
-    mode: 0
+    mode: 0,
+    transparent: false
 }
 
-export const navi = (state=initState, action) => {
+export default (state=initState, action) => {
     switch (action.type) {
         case CHANGE_TITLE:
             return Object.assign({}, state, {
