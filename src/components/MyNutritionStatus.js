@@ -24,7 +24,7 @@ class MyNutritionStatus extends React.Component {
           position: "relative",
           padding: "10px 40px 30px 40px",
           color: "#FFFFFF",
-          backgroundColor: "#6C3AC0"
+          backgroundColor: "#5836c9"
         };
 
         let chartStyle = {
@@ -80,7 +80,7 @@ class MyNutritionStatus extends React.Component {
 
         const mapToComponents = (data) => {
           return data.map((item, i) => {
-            return (<span style={{color: item.color, padding: "0px 5px"}}>■ {item.name}</span>);
+            return (<span key={i} style={{color: item.color, padding: "0px 5px"}}>■ {item.name}</span>);
           });
         };
 
@@ -121,7 +121,7 @@ class MyNutritionStatus extends React.Component {
             <div style={{"textAlign": "center"}}>
               <PieChart width={this.state.width / 2} height={this.state.width / 2} style={{"display": "inline-block", "margin": "20px"}}>
                 <Pie data={data} outerRadius={this.state.width / 4} fill="#F3EA52" label={percentLabel} labelLine={false} stroke="none">
-                  {data.map((entry, index) => <Cell fill={entry.color}/>)}
+                  {data.map((entry, index) => <Cell key={index} fill={entry.color}/>)}
                 </Pie>
               </PieChart>
               <div style={indexStyle}>

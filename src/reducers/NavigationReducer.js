@@ -1,9 +1,10 @@
-import { CHANGE_TITLE, CHANGE_ACTION_BAR_MODE, CHANGE_ACTION_BAR_TRANSPARENT } from "../actions/NavigationAction";
+import { CHANGE_TITLE, CHANGE_ACTION_BAR_MODE, CHANGE_ACTION_BAR_TRANSPARENT, SET_MAP_LINK } from "../actions/NavigationAction";
 
 let initState = {
     title: "고루고루",
     mode: 0,
-    transparent: false
+    transparent: false,
+    mapUrl: ""
 }
 
 export default (state=initState, action) => {
@@ -20,6 +21,10 @@ export default (state=initState, action) => {
             return Object.assign({}, state, {
                 transparent: action.transparent
             });
+        case SET_MAP_LINK:
+            return Object.assign({}, state, {
+                mapUrl: action.mapUrl
+            })
         default:
             return state;
     }

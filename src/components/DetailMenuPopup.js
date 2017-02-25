@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { undimming } from '../actions/DimmerAction';
 import { closePopup } from '../actions/PopupAction';
 import FontAwesome from 'react-fontawesome';
+import { getNutriOfFood } from '../modules/ApiModule';
 
 class DetailMenuPopup extends React.Component {
     constructor(args) {
@@ -45,9 +46,6 @@ class DetailMenuPopup extends React.Component {
             fontSize: "24px",
             fontStyle: "italic",
         }
-        let labelStyle = {
-
-        }
         let amountStyle = {
             float: "right"
         }
@@ -57,7 +55,7 @@ class DetailMenuPopup extends React.Component {
             right: "12px"
         }
         let listStyle = {
-            height:"288px",
+            height:"252px",
             listStyle: "none",
             padding: "8px 0",
             margin: 0,
@@ -68,7 +66,7 @@ class DetailMenuPopup extends React.Component {
             margin: "0px 24px",
             fontWeight: 500
         }
-        let listMajorItemStyle = Object.assign({}, listItemStyle, {color: "#FF4B4B"});
+        let listMajorItemStyle = Object.assign({}, listItemStyle, {color: "#FF4955"});
         let buttonStyle = {
             display: "block",
             textAlign: "center",
@@ -81,13 +79,18 @@ class DetailMenuPopup extends React.Component {
             fontSize: "17px",
             color: "#444444",
         }
+
         return <div style={style}>
             <div style={headerStyle}>{this.props.title}</div>
-            <ul style={listStyle}>
-            {this.state.nutri.map((n, i) => {
-                return <li style={n.major?listMajorItemStyle:listItemStyle} key={i}><span style={labelStyle}>{n.name}({n.unit})</span><span style={amountStyle}>{n.amount}</span></li>
-            })}
-            </ul>
+            <div style={listStyle}>
+                <div style={listItemStyle}><span>탄수화물(g)</span><span style={amountStyle}>{this.props.content[0]}({this.props.content[1]}%)</span></div>
+                <div style={listItemStyle}><span>지방(g)</span><span style={amountStyle}>{this.props.content[2]}({this.props.content[3]}%)</span></div>
+                <div style={listItemStyle}><span>단백질(g)</span><span style={amountStyle}>{this.props.content[4]}({this.props.content[5]}%)</span></div>
+                <div style={listItemStyle}><span>식이섬유(g)</span><span style={amountStyle}>{this.props.content[6]}</span></div>
+                <div style={listItemStyle}><span>칼륨(mg)</span><span style={amountStyle}>{this.props.content[7]}</span></div>
+                <div style={listItemStyle}><span>나트륨(mg)</span><span style={amountStyle}>{this.props.content[8]}</span></div>
+                <div style={listItemStyle}><span>칼로리(kcal)</span><span style={amountStyle}>{this.props.content[9]}</span></div>
+            </div>
             <button style={buttonStyle}>잘 먹겠습니다!</button>
             <FontAwesome style={closeButtonStyle} name="times" onClick={this.props.onClosePopup} />
         </div>
@@ -95,6 +98,7 @@ class DetailMenuPopup extends React.Component {
 }
 
 let mapStateToProps = (state) => {
+    console.log(state.popup.content);
     return {
         visible: state.popup.visible,
         title: state.popup.title,

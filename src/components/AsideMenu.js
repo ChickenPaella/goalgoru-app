@@ -27,7 +27,7 @@ class AsideMenu extends React.Component {
 
         return <ul style={style}>
             {this.state.menus.map((menu, index) => {
-                return (<AsideMenuItem key={index} name={menu.name} path={menu.path} active={menu.active} />)
+                return (<AsideMenuItem key={index} index={index} name={menu.name} path={menu.path} active={menu.active} />)
             })}
         </ul>
     }

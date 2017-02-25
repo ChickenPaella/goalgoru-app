@@ -56,14 +56,14 @@ class MainContainer extends React.Component {
     render() {
         let style = {
             paddingTop: "50px",
-            backgroundColor: "#6C3AC0"
+            backgroundColor: "#5836c9"
         }
         let linkWrapperStyle = {
             padding: "8px 18px 4px"
         }
 
         let linkStyle = {
-            backgroundColor: "#5B2FA6",
+            backgroundColor: "#492bae",
             borderRadius: "4px",
             padding: "7px 0px 6px",
             display: "block",

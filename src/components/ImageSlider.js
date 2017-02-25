@@ -8,9 +8,9 @@ class ImageSlider extends React.Component {
             runnable: undefined,
             active: 0,
             images: [
-                {id:1, imageUrl: "http://cfile5.uf.tistory.com/image/224E8F3E57148F7A0E43B5"},
-                {id:2, imageUrl: "http://img.tenasia.hankyung.com/webwp_kr/wp-content/uploads/2015/01/2015012014020420999-540x360.jpg"},
-                {id:3, imageUrl: "https://i.ytimg.com/vi/RPf-_DPqEpQ/maxresdefault.jpg"},
+                {id:1, title:"맑은 낙지탕", subtitle:"오늘은 낙지로 단백질을 낚지", imageUrl: "/assets/images/home_ban_img01.png", },
+                {id:2, title:"인삼 닭죽", subtitle:"단백은 닭죽을 받으라", imageUrl: "/assets/images/home_ban_img02.png"},
+                {id:3, title:"전주 비빔밥", subtitle:"단백질을 위한 비빔!", imageUrl: "/assets/images/home_ban_img03.png"},
             ]
         }
     }
@@ -42,8 +42,8 @@ class ImageSlider extends React.Component {
         }
         let indicatorWrapper = {
             position: "absolute",
-            bottom: "12px",
-            left: "18px",
+            bottom: "24px",
+            left: "29px",
             listStyle: "none",
             margin: 0,
             padding: 0,
@@ -52,8 +52,8 @@ class ImageSlider extends React.Component {
         let indicator = {
             float: "left",
             margin: "2px",
-            width: "6px",
-            height: "6px",
+            width: "5px",
+            height: "5px",
             borderRadius: "9999px",
             border: "1px solid #ffffff",
             // backgroundColor: "#ffffff"
@@ -61,8 +61,8 @@ class ImageSlider extends React.Component {
         let indicatorActive = {
             float: "left",
             margin: "2px",
-            width: "6px",
-            height: "6px",
+            width: "5px",
+            height: "5px",
             borderRadius: "9999px",
             border: "1px solid #ffffff",
             backgroundColor: "#ffffff"
@@ -71,7 +71,7 @@ class ImageSlider extends React.Component {
         return <div style={style}>
             <ul style={imageWrapperStyle}>
                 {this.state.images.map((image, index) => {
-                    return <ImageSliderItem key={index} id={image.id} imageUrl={image.imageUrl} active={index==this.state.active}/>
+                    return <ImageSliderItem key={index} id={image.id} title={image.title} subtitle={image.subtitle} imageUrl={image.imageUrl} visible={index==this.state.active?true:false}/>
                 })}
             </ul>
             <ul style={indicatorWrapper}>

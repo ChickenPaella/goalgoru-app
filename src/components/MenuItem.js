@@ -5,9 +5,9 @@ import { Link } from 'react-router'
 class MenuItem extends React.Component {
     render() {
         let style = {
-            marginBottom: "18px",
+            marginBottom: "10px",
             backgroundColor: "#ffffff",
-            boxShadow: "rgba(0, 0, 0, 0.34902) 0px 10px 40px -14px"
+            boxShadow: "rgba(0, 0, 0, 0.25) 0px 10px 20px -14px"
         }
         let linkStyle = {
             textDecoration: "none",
@@ -15,28 +15,27 @@ class MenuItem extends React.Component {
         }
 
         let mainWrapperStyle = {
-            padding: "18px",
+            padding: "20px",
             borderWidth: "0px 0px 1px 0px",
             borderStyle: "solid",
             borderColor: "#efefef",
             position: "relative"
         }
         let nameStyle = {
-            fontSize: "19px"
+            fontSize: "17px"
         }
         let typeStyle = {
-            fontWeight: 700,
-            fontSize: "15px",
-            marginTop: "2px",
-            color: "#FF4955",
-            position: "relative",
-            top: "2px"
+            fontWeight: 500,
+            fontSize: "13px",
+            marginTop: "6px",
+            color: "#FF4955"
         }
         let subWrapperStyle = {
-            padding: "12px 18px",
-            color: "#888888",
-            fontSize: "12px",
-            height: "14px"
+            padding: "0 20px",
+            color: "rgb(136, 136, 136)",
+            fontSize: "13px",
+            height: "38px",
+            lineHeight: "40px"
         }
         let addressStyle = {
             float:"left"
@@ -45,9 +44,10 @@ class MenuItem extends React.Component {
             float: "right"
         }
         let distanceStyle = {
+            fontSize: "16px",
             position: "absolute",
-            top: "18px",
-            right: "18px",
+            top: "20px",
+            right: "20px",
             color: "#FF4955"
         }
         return <li style={style}>

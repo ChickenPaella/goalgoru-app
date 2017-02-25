@@ -65,7 +65,7 @@ class LocationContainer extends React.Component {
             padding: "8px 0",
             fontSize: "13px",
             color: "#ffffff",
-            backgroundColor: "#6C3AC0",
+            backgroundColor: "#5836c9",
             fontWeight: 300
         }
         let listStyle = {
