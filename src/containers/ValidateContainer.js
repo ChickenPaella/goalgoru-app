@@ -1,7 +1,7 @@
 import React from 'react';
 import Validate from '../components/Validate';
 import { connect } from 'react-redux';
-import { changeTitle } from '../actions/NavigationAction';
+import { changeTitle, setActionBarOnlyBackward } from '../actions/NavigationAction';
 
 class ValidateContainer extends React.Component {
     constructor(props) {
@@ -30,6 +30,7 @@ let mapDispatchToProps = (dispatch) => {
     return {
         onChangeTitle: (title) => {
             dispatch(changeTitle(title));
+            dispatch(setActionBarOnlyBackward());
         }
     };
 };

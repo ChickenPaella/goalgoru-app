@@ -3,7 +3,7 @@ import MyNutritionStatus from '../components/MyNutritionStatus';
 import BadgeHistory from '../components/BadgeHistory';
 import Validate from '../components/Validate';
 import { connect } from 'react-redux';
-import { changeTitle } from '../actions/NavigationAction';
+import { changeTitle, setActionBarBase } from '../actions/NavigationAction';
 
 class MyPageContainer extends React.Component {
     componentDidMount() {
@@ -29,6 +29,7 @@ let mapDispatchToProps = (dispatch) => {
     return {
         onChangeTitle: (title) => {
             dispatch(changeTitle(title));
+            dispatch(setActionBarBase());
         }
     };
 };
