@@ -6,6 +6,8 @@ import MyPageReducer from './MyPageReducer';
 import RewardReducer from './RewardReducer';
 import PopupReducer from './PopupReducer';
 import SearchReducer from './SearchReducer';
+import SessionReducer from './SessionReducer';
+import SpinnerReducer from './SpinnerReducer';
 
 
 const AppReducer = combineReducers({
@@ -15,7 +17,9 @@ const AppReducer = combineReducers({
     mypage: MyPageReducer,
     reward: RewardReducer,
     popup: PopupReducer,
-    search: SearchReducer
+    search: SearchReducer,
+    session: SessionReducer,
+    spinner: SpinnerReducer,
 });
 
 export default AppReducer;

@@ -2,6 +2,7 @@ import React from 'react';
 import Navigation from './Navigation';
 import AsideContainer from "../containers/AsideContainer";
 import Dimmer from "./Dimmer";
+import Spinner from './Spinner';
 
 class App extends React.Component {
 
@@ -17,6 +18,7 @@ class App extends React.Component {
                 <AsideContainer />
                 <Dimmer />
                 <div>{this.props.children}</div>
+                <Spinner />
             </div>
         );
     }
