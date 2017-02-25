@@ -14,7 +14,26 @@ function responseFilter(response) {
     }
 }
 
+function get(path, callback) {
+    return axios.get(BASE_URL + path).then((response) => {callback(responseFilter(response))}).catch(callback(false));
+}
+
 export function getRegionByGeoPosition(longitude, latitude, callback) {
     const path = "geo/v1/geo2addr/"+longitude+","+latitude;
-    axios.get(BASE_URL + path).then((response) => {callback(responseFilter(response))});
+    get(path, callback);
+}
+
+export function getGeoPositionByRegion(region, callback) {
+    const path = "geo/v1/addr2geo/"+encodeURIComponent(region);
+    get(path, callback);
+}
+
+export function getRestaurantListByGeoPosition(longitude, latitude, callback) {
+    const path = "rsnt/list/"+longitude+","+latitude;
+    get(path, callback);
+}
+
+export function getUserList(token, callback) {
+    const path = "user/list";
+    get(path, callback);
 }

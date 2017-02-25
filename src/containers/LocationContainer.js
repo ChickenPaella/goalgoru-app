@@ -5,31 +5,31 @@ import { browserHistory } from 'react-router';
 import { changeTitle, setActionBarOnlyBackward } from '../actions/NavigationAction';
 import { setLocation } from '../actions/SearchAction';
 import { dimming, undimming } from '../actions/DimmerAction';
-import { getRegionByGeoPosition } from '../module/ApiModule';
+import { getRegionByGeoPosition } from '../modules/ApiModule';
 import { showSpinner, hideSpinner } from '../actions/SpinnerAction';
+import { getGeoPositionByRegion } from '../modules/ApiModule';
 
 class LocationContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             list: [
-                {region: "서울특별시 은평구 녹번동"},
-                {region: "서울특별시 은평구 불광1동"},
-                {region: "서울특별시 은평구 불광2동"},
-                {region: "서울특별시 은평구 갈현1동"},
-                {region: "서울특별시 은평구 갈현2동"},
-                {region: "서울특별시 은평구 구산동"},
-                {region: "서울특별시 은평구 대조동"},
-                {region: "서울특별시 은평구 응암1동"},
-                {region: "서울특별시 은평구 응암2동"},
-                {region: "서울특별시 은평구 응암3동"},
-                {region: "서울특별시 은평구 역촌동"},
-                {region: "서울특별시 은평구 역촌동"},
-                {region: "서울특별시 은평구 신사1동"},
-                {region: "서울특별시 은평구 신사2동"},
-                {region: "서울특별시 은평구 증산동"},
-                {region: "서울특별시 은평구 수색동"},
-                {region: "서울특별시 은평구 진관동"}
+                {region: "서울특별시 은평구 녹번동", latitude:"37.605225", longitude:"126.9255449"},
+                {region: "서울특별시 은평구 불광1동", latitude:"37.6125048", longitude:"126.9278676"},
+                {region: "서울특별시 은평구 불광2동", latitude:"37.6207241", longitude:"126.9232765"},
+                {region: "서울특별시 은평구 갈현1동", latitude:"37.6246787", longitude:"126.9090486"},
+                {region: "서울특별시 은평구 갈현2동", latitude:"37.6172607", longitude:"126.9074983"},
+                {region: "서울특별시 은평구 구산동", latitude:"37.6117598", longitude:"126.8999045"},
+                {region: "서울특별시 은평구 대조동", latitude:"37.612621", longitude:"126.9198649"},
+                {region: "서울특별시 은평구 응암1동", latitude:"37.5978855", longitude:"126.9224471"},
+                {region: "서울특별시 은평구 응암2동", latitude:"37.5916992", longitude:"126.9192102"},
+                {region: "서울특별시 은평구 응암3동", latitude:"37.5893046", longitude:"126.9135215"},
+                {region: "서울특별시 은평구 역촌동", latitude:"37.6049235", longitude:"126.9077125"},
+                {region: "서울특별시 은평구 신사1동", latitude:"37.5984534", longitude:"126.903916"},
+                {region: "서울특별시 은평구 신사2동", latitude:"37.5936342", longitude:"126.9025686"},
+                {region: "서울특별시 은평구 증산동", latitude:"37.5833062", longitude:"126.901740"},
+                {region: "서울특별시 은평구 수색동", latitude:"37.5850342", longitude:"126.8840935"},
+                {region: "서울특별시 은평구 진관동", latitude:"37.6411844", longitude:"126.9186352"}
             ]
         };
         this.getLocation = this.getLocation.bind(this);
@@ -44,9 +44,11 @@ class LocationContainer extends React.Component {
         if(("geolocation" in navigator)) {
             this.props.onDimming();
             navigator.geolocation.getCurrentPosition((pos) => {
-                getRegionByGeoPosition(pos.coords.latitude, pos.coords.longitude, (data) => {
+                let latitude = pos.coords.latitude;
+                let longitude = pos.coords.longitude;
+                getRegionByGeoPosition(latitude, longitude, (data) => {
                     if(!!data) {
-                        this.props.onSetAutoLocation(data.sido+" "+ data.sigugun +" "+ data.dong);
+                        this.props.onSetAutoLocation(data.sido+" "+ data.sigugun +" "+ data.dong, latitude, longitude);
                     }
                     this.props.onBackToHome();
                 });
@@ -86,7 +88,10 @@ class LocationContainer extends React.Component {
             <ul style={listStyle}>
                 {this.state.list.map((location, index) => {
                     return (
-                        <li style={listItemStyle} key={index} onClick={() => {this.props.onSetManualLocation(location.region); browserHistory.push('/');}}>{location.region}</li>
+                        <li style={listItemStyle} key={index} onClick={() => {
+                            this.props.onSetManualLocation(location.region, location.latitude, location.longitude);
+                            browserHistory.push('/');
+                        }}>{location.region}</li>
                     )
                 })}
             </ul>
@@ -118,11 +123,11 @@ let mapDispatchToProps = (dispatch, props) => {
         onSetActionBarOnlyBackward: () => {
             dispatch(setActionBarOnlyBackward());
         },
-        onSetAutoLocation: (location) => {
-            dispatch(setLocation(location, true));
+        onSetAutoLocation: (location, latitude, longitude) => {
+            dispatch(setLocation(location, true, latitude, longitude));
         },
-        onSetManualLocation: (location) => {
-            dispatch(setLocation(location, false));
+        onSetManualLocation: (location, latitude, longitude) => {
+            dispatch(setLocation(location, false, latitude, longitude));
         }
     };
 };

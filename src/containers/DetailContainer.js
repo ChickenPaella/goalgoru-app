@@ -7,13 +7,13 @@ import DetailMenuPopup from '../components/DetailMenuPopup';
 class DetailContainer extends React.Component {
     constructor(args) {
         super(args);
-        this.state = {
-            id: args.params.id,
-            below: false,
-            name: "김밥천국 고루고루점",
-            description: "한식 | 서울시 고루구 고루동",
-            imageUrl: "http://pds27.egloos.com/pds/201212/27/12/c0055612_50dc4e569909d.jpg"
-        };
+        // this.state = {
+        //     id: args.params.id,
+        //     below: false,
+        //     name: "김밥천국 고루고루점",
+        //     description: "한식 | 서울시 고루구 고루동",
+        //     imageUrl: "http://pds27.egloos.com/pds/201212/27/12/c0055612_50dc4e569909d.jpg"
+        // };
         this.handleScroll = this.handleScroll.bind(this);
     }
     componentDidMount() {
