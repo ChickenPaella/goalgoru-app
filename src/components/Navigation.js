@@ -11,6 +11,7 @@ class Navigation extends React.Component {
             zIndex: 200,
             height: "50px",
             width: "100%",
+            maxWidth: "420px",
             backgroundColor: "#6C3AC0",
             color:"#ffffff",
             top:"0",
