@@ -7,6 +7,14 @@ import { prevMonth, nextMonth } from '../actions/MyPageAction';
 class MyNutritionStatus extends React.Component {
     constructor(props, context) {
         super(props, context);
+
+        this.state = {
+          "width": props.width
+        };
+    }
+
+    componentDidMount(x,y,z){
+     this.setState({width:window.innerWidth});
     }
 
     render() {
@@ -60,16 +68,16 @@ class MyNutritionStatus extends React.Component {
         };
 
         /* Graph 처리 */
-        let data = [{name: 'Group A', value: 400}, {name: 'Group B', value: 300}, {name: 'Group C', value: 300}, {name: 'Group D', value: 200}];
+        let data = [{name: '단', value: 400}, {name: '탄', value: 300}, {name: '지', value: 300}];
         const RADIAN = Math.PI / 180;
         const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
-         	const radius = outerRadius * 1.3;
+         	const radius = outerRadius * 1.1;
           const x = cx + radius * Math.cos(-midAngle * RADIAN);
           const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
           return (
-            <text x={x} y={y} fill="#6C3AC0" textAnchor={x > cx ? 'start' : 'end'} 	dominantBaseline="central">
-              {`${(percent * 100).toFixed(0)}%`}
+            <text x={x} y={y} fill="#6C3AC0" dominantBaseline="central">
+              {`${data[index].name + ": " + (percent * 100).toFixed(0)}%`}
             </text>
           );
         };
@@ -80,11 +88,10 @@ class MyNutritionStatus extends React.Component {
               <FontAwesome name="angle-left" style={navButtonStyle} />
             </div>
 
-            <span style={titleStyle}>{this.props.date}년 {this.props.date}월</span>
+            <span style={titleStyle}>{this.props.year}년 {this.props.month + 1}월</span>
             <div style={{"textAlign": "center"}}>
-              <PieChart width={300} height={300} style={{"display": "inline-block"}}>
-                <Pie data={data} cx="50%" cy="50%" outerRadius={50} fill="#F3EA52" />
-                <Pie data={data} cx="50%" cy="50%" innerRadius={60} outerRadius={80} fill="#6C3AC0" label={renderCustomizedLabel} />
+              <PieChart width={this.state.width - 100} height={this.state.width - 100} style={{"display": "inline-block"}}>
+                <Pie data={data} cx="50%" cy="50%" outerRadius={this.state.width / 4} innerRadius={this.state.width / 4 - 20} fill="#F3EA52" label={renderCustomizedLabel} />
               </PieChart>
             </div>
 
@@ -100,7 +107,8 @@ class MyNutritionStatus extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        date: undefined
+        year: state.mypage.year,
+        month: state.mypage.month
     };
 };
 

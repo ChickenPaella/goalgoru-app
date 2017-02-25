@@ -7,8 +7,21 @@ class StoreList extends React.Component {
     }
 
     render() {
+      let style = {
+        "textAlign": "center"
+      };
+
       return (
-        <div>
+        <div style={style}>
+          <StoreItem />
+          <StoreItem />
+          <StoreItem />
+          <StoreItem />
+          <StoreItem />
+          <StoreItem />
+          <StoreItem />
+          <StoreItem />
+          <StoreItem />
           <StoreItem />
           <StoreItem />
           <StoreItem />

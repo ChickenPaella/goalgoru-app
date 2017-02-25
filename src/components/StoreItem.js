@@ -26,7 +26,8 @@ class StoreItem extends React.Component {
       "height": "2em",
       "display": "block",
       "padding": "5px 5%",
-      "overflow": "hidden"
+      "overflow": "hidden",
+      "textAlign": "left"
     };
 
     let purchasedStyle = {
@@ -40,8 +41,16 @@ class StoreItem extends React.Component {
       "opacity": "0.7"
     };
 
+    let starStyle = {
+      "display": "block",
+      "borderBottom": "1px solid #EFEFEF",
+      "paddingBottom": "5px",
+      "width": "90%",
+      "marginLeft": "5%",
+      "textAlign": "left"
+    };
+
     let buttonStyle = {
-      "marginTop": "5px",
       "border": "none",
       "backgroundColor": "#FFFFFF",
       "color": "#FC4356",
@@ -54,8 +63,8 @@ class StoreItem extends React.Component {
       <div style={style}>
         <span style={purchasedStyle}>결제완료</span>
         <span style={imageStyle}></span>
-        <span>[{this.props.store.name}] {this.props.menu.name}</span>
-        <span><span style={{"color": "#FC4356"}}>★</span> {this.props.price}</span>
+        <span style={descStyle}>[{this.props.store.name}] {this.props.menu.name}</span>
+        <span style={starStyle}><span style={{"color": "#FC4356"}}>★</span> {this.props.price}</span>
         <button style={buttonStyle}>구매하기</button>
       </div>
     );
