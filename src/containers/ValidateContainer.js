@@ -21,7 +21,7 @@ class ValidateContainer extends React.Component {
 
     render() {
         let style = {
-          "padding": "50px 20px 20px 20px",
+          "padding": "50px 20px 44px 20px",
           "backgroundColor": "#6C3AC0",
           "boxSizing": "border-box",
           "minHeight": this.state.height
@@ -39,6 +39,9 @@ let mapDispatchToProps = (dispatch) => {
     return {
         onChangeTitle: (title) => {
             dispatch(changeTitle(title));
+        },
+        setActionBar: () => {
+            dispatch(setActionBarOnlyBackward());
         }
     };
 };

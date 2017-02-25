@@ -24,11 +24,12 @@ class Validate extends React.Component {
       let style = {
         "position": "relative",
         "textAlign": "justify",
-        "padding": "40px 20px",
+        "padding": "40px 30px",
         "backgroundColor": "#FFFFFF",
         "width": "100%",
         "margin": "auto",
-        "boxSizing": "border-box"
+        "boxSizing": "border-box",
+        "boxShadow": "rgba(0, 0, 0, 0.34902) 0px 10px 40px -14px"
       };
 
       let buttonStyle = {
@@ -117,14 +118,14 @@ class Validate extends React.Component {
 
       return (
         <div style={style}>
-          <InputForm name="store" title="식사한 식당" width="60%" value={this.state.store.name} readOnly={true} />
-          <InputForm name="date" title="일자" width="40%" value={getDate()} readOnly={true}/>
-          <InputForm name="menu" title="음식명" width="100%" value={this.state.menu.name} readOnly={true}/>
-          <InputForm name="authCode" title="영수증 번호" width="100%" align="center" color="#6C3AC0" />
+          <InputForm name="store" title="식사한 식당" width="55%" value={this.state.store.name} readOnly={true} bolder={true} />
+          <InputForm name="date" title="일자" width="45%" value={getDate()} readOnly={true}/>
+          <InputForm name="menu" title="음식명" width="100%" value={this.state.menu.name} readOnly={true} bolder={true} padding="20px" />
+          <InputForm name="authCode" title="영수증 번호" width="100%" align="center" color="#6C3AC0" bolder={true} letterSpacing="0.2em" />
 
-          <img src="../assets/images/cer_receipt.png" style={{"maxWidth": "100%", "marginBottom": "50px"}} />
+          <img src="../assets/images/cer_receipt.png" style={{"maxWidth": "100%", "marginBottom": "90px", "marginTop": "-10px"}} />
 
-          <button style={buttonStyle} onClick={this.props.onOpenValidateConfirm}>제출하고 뱃지 받기</button>
+          <button style={buttonStyle} onClick={this.props.onOpenValidateConfirm}>제출하기</button>
 
           <div style={this.props.validateConfirmVisible?openedValidateConfirmStyle:{"display": "none"}}>
             <span style={cautionStyle}>확인해주세요!!</span>
