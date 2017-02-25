@@ -6,6 +6,7 @@ import { changeTitle, setActionBarBase } from '../actions/NavigationAction';
 import { setLocation } from '../actions/SearchAction';
 import ImageSlider from '../components/ImageSlider';
 import MenuList from '../components/MenuList';
+import { getRegionByGeoPosition } from '../module/ApiModule';
 
 class MainContainer extends React.Component {
     constructor(args) {
@@ -20,11 +21,13 @@ class MainContainer extends React.Component {
     }
 
     getLocation() {
-        if("geolocation" in navigator) {
-            // this.props.onSetLocation();
+        if(("geolocation" in navigator) && this.props.tracking) {
             navigator.geolocation.getCurrentPosition((pos) => {
-                // console.log(pos.coords.latitude);
-                // console.log(pos.coords.longitude);
+                getRegionByGeoPosition(pos.coords.latitude, pos.coords.longitude, (data) => {
+                    if(!!data) {
+                        this.props.onSetAutoLocation(data.sido+" "+ data.sigugun +" "+ data.dong);
+                    }
+                });
             });
         }
     }
@@ -52,7 +55,7 @@ class MainContainer extends React.Component {
 
         return <div style={style}>
             <div style={linkWrapperStyle}>
-                <Link to='location' style={linkStyle}><FontAwesome name="map-marker" />&nbsp;&nbsp;{this.props.location}</Link>
+                <Link to='location' style={linkStyle}>{this.props.location}</Link>
             </div>
             <ImageSlider />
             <MenuList />
@@ -62,7 +65,8 @@ class MainContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        location: state.search.location
+        location: state.search.location,
+        tracking: state.search.tracking
     }
 }
 
@@ -74,8 +78,8 @@ let mapDispatchToProps = (dispatch) => {
         onSetActionBarBase: () => {
             dispatch(setActionBarBase());
         },
-        onSetLocation: (loc) => {
-            dispatch(setLocation(loc));
+        onSetAutoLocation: (location) => {
+            dispatch(setLocation(location, true));
         }
     };
 };

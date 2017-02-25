@@ -12,6 +12,7 @@ import LocationContainer from './containers/LocationContainer';
 import DetailContainer from './containers/DetailContainer';
 import ValidateContainer from './containers/ValidateContainer';
 import CardInfoContainer from './containers/CardInfoContainer';
+import CallbackContainer from './containers/CallbackContainer';
 import AppReducer from './reducers/AppReducer';
 
 let store = createStore(AppReducer);
@@ -28,6 +29,7 @@ ReactDOM.render(
                 <Route path="/detail/:id" component={DetailContainer} />
                 <Route path="/validate" component={ValidateContainer} />
                 <Route path="/card" component={CardInfoContainer} />
+                <Route path="/api/session/:session" component={CallbackContainer} />
             </Route>
         </Router>
     </Provider>,
