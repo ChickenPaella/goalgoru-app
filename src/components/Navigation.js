@@ -3,7 +3,6 @@ import { Link, browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { openAside } from '../actions/AsideAction';
 import { dimming, undimming } from '../actions/DimmerAction';
-import FontAwesome from 'react-fontawesome';
 
 class Navigation extends React.Component {
     render() {
@@ -12,7 +11,7 @@ class Navigation extends React.Component {
             height: "50px",
             width: "100%",
             maxWidth: "420px",
-            backgroundColor: "#6C3AC0",
+            backgroundColor: "#5836c9",
             color:"#ffffff",
             top:"0",
             position: "fixed",
@@ -34,42 +33,48 @@ class Navigation extends React.Component {
         }
 
         let leftButtonStyle = {
-            lineHeight: "51px",
-            padding: "0 18px",
+            height: "31px",
+            padding: "11px 15px",
             fontSize: "24px",
             color: "#ffffff"
         }
 
         let rightButtonStyle = {
-            lineHeight: "51px",
-            padding: "0 18px",
+            height: "31px",
+            padding: "11px 15px",
             fontSize: "24px",
             float: "right",
             color: "#ffffff"
         }
+        let logoStype = {
+            width: "99px",
+            height: "23px",
+            position: "relative",
+            top:"3px"
+        }
         switch(this.props.mode) {
             case 1:     //setActionBarBackward
                 return <div style={this.props.transparent?styleTransparent:style}>
-                    <FontAwesome style={leftButtonStyle} name="arrow-left" onClick={browserHistory.goBack} />
+                    <img style={leftButtonStyle} src={"/assets/images/top_ico_back.png"} onClick={browserHistory.goBack} />
                     <span style={titleStyle}>{this.props.title}</span>
-                    <FontAwesome name="map" style={rightButtonStyle} />
+                    <img src={"/assets/images/top_ico_location.png"} style={rightButtonStyle} />
                 </div>
             case 2:
                 return <div style={style}>
-                    <Link style={leftButtonStyle} to="/"><FontAwesome style={leftButtonStyle} name="home" /></Link>
+                    <Link style={leftButtonStyle} to="/"><img src={"/assets/images/top_ico_home.png"}  style={leftButtonStyle} name="home" /></Link>
                     <span style={titleStyle}>{this.props.title}</span>
                 </div>
             case 3:     //setActionBarOnlyBackward
                 return <div style={this.props.transparent?styleTransparent:style}>
-                    <FontAwesome style={leftButtonStyle} name="arrow-left" onClick={browserHistory.goBack} />
+                    <img src={"/assets/images/top_ico_back.png"} style={leftButtonStyle} onClick={browserHistory.goBack} />
                     <span style={titleStyle}>{this.props.title}</span>
                 </div>
             default:
                 return <div style={style}>
-                    <FontAwesome name="bars" style={leftButtonStyle} onClick={this.props.onOpenAside} />
-                    <span style={titleStyle}>{this.props.title}</span>
+                    <img src={"/assets/images/top_ico_menu.png"} style={leftButtonStyle} onClick={this.props.onOpenAside} />
+                    <span style={titleStyle}><img style={logoStype} src="/assets/images/top_logo.png"/></span>
                     <Link to="location">
-                        <FontAwesome name="compass" style={rightButtonStyle} />
+                        <img src={"/assets/images/top_ico_location.png"}  style={rightButtonStyle} />
                     </Link>
                 </div>
         }

@@ -37,7 +37,7 @@ export function getGeoPositionByRegion(region, callback) {
 }
 
 export function getRestaurantListByGeoPosition(longitude, latitude, callback) {
-    const path = "/api/rsnt/list/"+longitude+","+latitude;
+    const path = "/api/rsnt/list/geo/"+longitude+","+latitude;
     get(path, callback);
 }
 

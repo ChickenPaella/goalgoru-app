@@ -24,7 +24,7 @@ class MyNutritionStatus extends React.Component {
           position: "relative",
           padding: "20px 40px",
           color: "#FFFFFF",
-          backgroundColor: "#6C3AC0"
+          backgroundColor: "#5836c9"
         };
 
         let chartStyle = {

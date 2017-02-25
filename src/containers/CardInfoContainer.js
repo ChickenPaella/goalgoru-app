@@ -22,7 +22,7 @@ class CardInfoContainer extends React.Component {
     render() {
         let style = {
           paddingTop: "50px",
-          backgroundColor: "#6C3AC0",
+          backgroundColor: "#5836c9",
           minHeight: this.state.height,
           boxSizing: "border-box"
         };

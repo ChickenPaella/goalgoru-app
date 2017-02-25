@@ -16,7 +16,7 @@ class StarStat extends React.Component {
     render() {
       let style = {
         "position": "relative",
-        "backgroundColor": "#6C3AC0",
+        "backgroundColor": "#5836c9",
         "backgroundImage": "url('../assets/images/bg_store.png')",
         "backgroundSize": "contain",
         "backgroundPosition": "right top",

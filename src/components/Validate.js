@@ -32,7 +32,7 @@ class Validate extends React.Component {
         "width": "100%",
         "height": "3em",
         "border": "0px",
-        "backgroundColor": "#6C3AC0",
+        "backgroundColor": "#5836c9",
         "color": "#FFFFFF"
       };
 
@@ -74,7 +74,7 @@ class Validate extends React.Component {
         "width": "100%",
         "height": "3em",
         "lineHeight": "3em",
-        "backgroundColor": "#6C3AC0",
+        "backgroundColor": "#5836c9",
         "color": "#FFFFFF",
         "border": "0px",
         "borderRadius": "0px 0px 10px 10px",

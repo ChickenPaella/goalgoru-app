@@ -68,7 +68,7 @@ class DetailMenuPopup extends React.Component {
             margin: "0px 24px",
             fontWeight: 500
         }
-        let listMajorItemStyle = Object.assign({}, listItemStyle, {color: "#FF4B4B"});
+        let listMajorItemStyle = Object.assign({}, listItemStyle, {color: "#FDF51E"});
         let buttonStyle = {
             display: "block",
             textAlign: "center",

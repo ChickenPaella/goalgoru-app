@@ -16,7 +16,7 @@ class ValidateContainer extends React.Component {
     render() {
         let style = {
           "paddingTop": "50px",
-          "backgroundColor": "#6C3AC0"
+          "backgroundColor": "#5836c9"
         };
 
         return(

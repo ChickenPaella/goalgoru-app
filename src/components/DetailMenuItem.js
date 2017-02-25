@@ -39,7 +39,7 @@ class DetailMenuItem extends React.Component {
             paddingLeft: "4px",
             fontSize: "15px",
             fontWeight: 500,
-            color: "#FF4B4B"
+            color: "#FDF51E"
         }
         return <li style={style} onClick={this.props.onOpenPopup}>
             <div style={textWrapperStyle}>
