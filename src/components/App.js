@@ -6,12 +6,17 @@ import Dimmer from "./Dimmer";
 class App extends React.Component {
 
     render(){
+        let style = {
+            position: "relative",
+            maxWidth: "420px",
+            margin: "0 auto"
+        }
         return (
-            <div>
+            <div style={style}>
                 <Navigation />
                 <AsideContainer />
                 <Dimmer />
-                {this.props.children}
+                <div>{this.props.children}</div>
             </div>
         );
     }
