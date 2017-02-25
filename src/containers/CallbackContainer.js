@@ -12,7 +12,7 @@ class CallbackContainer extends React.Component {
 
     componentDidMount() {
         getUserList(this.props.token, (data) => {
-            console.log(data);
+            
         });
     }
 

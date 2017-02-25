@@ -57,7 +57,7 @@ class Navigation extends React.Component {
                 return <div style={this.props.transparent?styleTransparent:style}>
                     <img style={leftButtonStyle} src={"/assets/images/top_ico_back.png"} onClick={browserHistory.goBack} />
                     <span style={titleStyle}>{this.props.title}</span>
-                    <img src={"/assets/images/top_ico_location.png"} style={rightButtonStyle} />
+                    <a href={this.props.mapUrl} target={"_blank"}><img src={"/assets/images/top_ico_map.png"} style={rightButtonStyle} /></a>
                 </div>
             case 2:
                 return <div style={style}>
@@ -73,7 +73,7 @@ class Navigation extends React.Component {
                 return <div style={style}>
                     <img src={"/assets/images/top_ico_menu.png"} style={leftButtonStyle} onClick={this.props.onOpenAside} />
                     <span style={titleStyle}><img style={logoStype} src="/assets/images/top_logo.png"/></span>
-                    <Link to="location">
+                    <Link to={"/location"}>
                         <img src={"/assets/images/top_ico_location.png"}  style={rightButtonStyle} />
                     </Link>
                 </div>
@@ -94,6 +94,7 @@ let mapStateToProps = (state) => {
         title: state.navi.title,
         mode: state.navi.mode,
         transparent: state.navi.transparent,
+        mapUrl: state.navi.mapUrl
     }
 }
 let mapDispatchToProps = (dispatch) => {

@@ -18,12 +18,16 @@ function responseFilter(response) {
 function get(path, callback) {
     axios.defaults.baseURL = BASE_URL;
     axios.get(path).then((response) => {callback(responseFilter(response))}).catch(callback(false));
-    // , {
-    //     headers: {
-    //         "X-Auth-Token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJrYWthby0zNzU1NDY1NTkifQ.4hWZgpvN5PCz8bUbcdIKxZgUQJRq9Lx2B8kd60nbCRyXlfE0LLE0Z6PvV7kv0YNQQSe2wRKPEHhPzo3jn6MuSQ"
-    //     }
-    // }
+}
 
+export function getNutriOfFood(foodName, callback) {
+    const path = "/api/food/nutri/"+encodeURIComponent(foodName);
+    get(path, callback);
+}
+
+export function getRestaurantDetail(seq, callback) {
+    const path = "/api/rsnt/view/"+seq;
+    get(path, callback);
 }
 
 export function getRegionByGeoPosition(longitude, latitude, callback) {

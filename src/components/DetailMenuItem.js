@@ -1,10 +1,27 @@
 import React from 'react';
+import format from 'format-number';
 import { connect } from 'react-redux';
 import FontAwesome from 'react-fontawesome';
 import { dimming, undimming } from '../actions/DimmerAction';
 import { openPopup } from '../actions/PopupAction';
+import { getNutriOfFood } from '../modules/ApiModule';
 
 class DetailMenuItem extends React.Component {
+    constructor(args) {
+        super(args);
+        this.openPopup = this.openPopup.bind(this);
+    }
+
+    openPopup() {
+        getNutriOfFood(this.props.name, (data) => {
+            if(!!data) {
+                let payload = [data.carbo, data.carboPercent, data.protein, data.proteinPercent,
+                    data.fat, data.fatPercent, data.fiber, data.kalium, data.natrium, data.calorie];
+                this.props.onOpenPopup(data.name, payload);
+            }
+        });
+    }
+
     render() {
         let style = {
             borderTop: "6px solid #efefef",
@@ -41,13 +58,13 @@ class DetailMenuItem extends React.Component {
             fontWeight: 500,
             color: "#FDF51E"
         }
-        return <li style={style} onClick={this.props.onOpenPopup}>
+        return <li style={style} onClick={this.openPopup}>
             <div style={textWrapperStyle}>
                 <div style={nameStyle}>{this.props.name}<span style={bestStyle}>{this.props.best?"BEST":""}</span></div>
                 <div style={descriptionStyle}><span>{this.props.type}</span>&nbsp;|&nbsp;<span>{this.props.calorie}kcal</span></div>
             </div>
             <div style={priceWrapperStyle}>
-                <FontAwesome name="krw" /><span style={priceStyle}>4,000</span>
+                <FontAwesome name="krw" /><span style={priceStyle}>&nbsp;{format()(this.props.price)}</span>
             </div>
         </li>
     }
@@ -61,9 +78,9 @@ let mapStateToProps = () => {
 
 let mapDispatchToProps = (dispatch, props) => {
     return {
-        onOpenPopup: () => {
+        onOpenPopup: (title, content) => {
             dispatch(dimming());
-            dispatch(openPopup(props.name));
+            dispatch(openPopup(title, content));
         }
     }
 }

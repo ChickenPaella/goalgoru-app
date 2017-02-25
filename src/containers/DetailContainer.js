@@ -1,26 +1,39 @@
 import React from 'react';
-import { changeTitle, setActionBarBackward, setActionBarHome, setActionBarTransparent } from '../actions/NavigationAction';
+import { changeTitle, setActionBarBackward, setActionBarHome, setActionBarTransparent, setMapLink } from '../actions/NavigationAction';
 import { connect } from 'react-redux';
 import DetailMenuList from '../components/DetailMenuList';
 import DetailMenuPopup from '../components/DetailMenuPopup';
+import { getRestaurantDetail } from '../modules/ApiModule';
 
 class DetailContainer extends React.Component {
     constructor(args) {
         super(args);
-        // this.state = {
-        //     id: args.params.id,
-        //     below: false,
-        //     name: "김밥천국 고루고루점",
-        //     description: "한식 | 서울시 고루구 고루동",
-        //     imageUrl: "http://pds27.egloos.com/pds/201212/27/12/c0055612_50dc4e569909d.jpg"
-        // };
+        this.state = {
+            id: args.params.id,
+            menus: []
+        };
         this.handleScroll = this.handleScroll.bind(this);
     }
     componentDidMount() {
+        getRestaurantDetail(this.state.id, (data) => {
+            if(!!data) {
+                console.log(data);
+                let newState =  {
+                    mapUrl : "http://map.daum.net/link/map/"+encodeURIComponent(data.name)+","+data.location.latitude+","+data.location.longitude,
+                    name: data.name,
+                    description: data.category + "|" + data.address,
+                    menus: data.foods
+                }
+                this.setState(newState);
+                this.props.onSetMap(newState.mapUrl);
+            }
+            console.log(this.state.id, data.location);
+        });
         window.scrollTo(0, 0);
         window.addEventListener('scroll', this.handleScroll);
         this.props.onInit();
     }
+
 
     componentWillUnmount() {
         this.props.onSetActionBarTransparent(false);
@@ -50,7 +63,7 @@ class DetailContainer extends React.Component {
             zIndex: 2,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            backgroundImage: "url("+this.state.imageUrl+")"
+            backgroundImage: "url(/assets/images/dummy0.png)"
         }
         let imageDimmerStyle = {
             backgroundColor: "#000000",
@@ -83,18 +96,24 @@ class DetailContainer extends React.Component {
                     <div style={descriptionStyle}>{this.state.description}</div>
                 </div>
             </div>
-            <DetailMenuList />
+            <DetailMenuList menus={this.state.menus} />
             <DetailMenuPopup visible={false} />
         </div>
     }
 }
 
 let mapStateToProps = (state) => {
-    return {}
+    return {
+
+    }
 };
 
 let mapDispatchToProps = (dispatch) => {
     return {
+        onSetMap: (mapUrl) => {
+            console.log("mapUrl", mapUrl);
+            dispatch(setMapLink(mapUrl));
+        },
         onInit: () => {
             dispatch(changeTitle(""));
             dispatch(setActionBarTransparent(true));

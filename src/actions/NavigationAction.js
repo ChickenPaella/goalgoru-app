@@ -1,6 +1,7 @@
 export const CHANGE_TITLE = "CHANGE_TITLE";
 export const CHANGE_ACTION_BAR_MODE = "CHANGE_ACTION_BAR_MODE";
 export const CHANGE_ACTION_BAR_TRANSPARENT = "CHANGE_ACTION_BAR_TRANSPARENT";
+export const SET_MAP_LINK = "SET_MAP_LINK";
 
 export function changeTitle(title) {
     return {
@@ -41,5 +42,12 @@ export function setActionBarTransparent(transparent) {
     return {
         type: CHANGE_ACTION_BAR_TRANSPARENT,
         transparent: !!transparent
+    }
+}
+
+export function setMapLink(mapUrl) {
+    return {
+        type: SET_MAP_LINK,
+        mapUrl: mapUrl
     }
 }

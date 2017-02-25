@@ -10,7 +10,7 @@ class AsideMenuItem extends React.Component {
             borderStyle: "solid",
             borderWidth: "1px 0px 0px",
             borderColor: "#dfdfdf",
-            backgroundColor: this.props.active?"#888888":"#ffffff"
+            backgroundColor: this.props.active?"#5836c9":"#ffffff"
         }
         let linkStyle = {
             display: "block",
@@ -18,6 +18,16 @@ class AsideMenuItem extends React.Component {
             textDecoration: "none",
             color: this.props.active?"#ffffff":"#666666"
         }
+
+        if(this.props.index == 3) {
+            style = Object.assign({}, style, {
+                position: "fixed",
+                bottom: 0,
+                left: 0,
+                width: "280px"
+            })
+        }
+
         return <li style={style}>
             <Link to={this.props.path} style={linkStyle} onClick={this.props.onMove}>{this.props.name}</Link>
         </li>
