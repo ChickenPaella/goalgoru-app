@@ -28,17 +28,18 @@ class DetailMenuPopup extends React.Component {
         let style = {
             position: "fixed",
             left: 0,
-            top: 0,
+            top: "50%",
             zIndex: 1001,
             width: "80%",
-            margin: "10% 10%",
+            margin: "0 10%",
+            marginTop: "-220px",
             backgroundColor: "#FFFFFF",
             borderRadius: "5px"
         }
         let headerStyle = {
             borderTopLeftRadius: "5px",
             borderTopRightRadius: "5px",
-            padding: "36px 0 30px 0",
+            padding: "23px 0 20px 0",
             margin: "0 24px",
             textAlign: "center",
             fontSize: "24px",
@@ -56,6 +57,7 @@ class DetailMenuPopup extends React.Component {
             right: "12px"
         }
         let listStyle = {
+            height:"280px",
             listStyle: "none",
             padding: "8px 0",
             margin: 0,
@@ -71,7 +73,7 @@ class DetailMenuPopup extends React.Component {
             display: "block",
             textAlign: "center",
             width: "100%",
-            height: "83px",
+            height: "60px",
             backgroundColor: "#fdf51e",
             border: "none",
             borderBottomLeftRadius: "5px",
