@@ -1,7 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import FontAwesome from 'react-fontawesome';
-import { changeTitle } from '../actions/NavigationAction';
+import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
+import { changeTitle, setActionBarOnlyBackward } from '../actions/NavigationAction';
+import { setLocation } from '../actions/SearchAction';
 
 class LocationContainer extends React.Component {
     constructor(props) {
@@ -9,26 +11,36 @@ class LocationContainer extends React.Component {
         this.state = {
             currentLocation: "경기도 성남시 수정구",
             list: [
-                {id:1, name:"성남시 수정구 수진동", selected:false},
-                {id:2, name:"성남시 수정구 태평동", selected:false},
-                {id:3, name:"성남시 수정구 신흥동", selected:false},
-                {id:4, name:"성남시 중원구 성남동", selected:false},
-                {id:5, name:"성남시 중원구 하대원동", selected:false},
+                {region: "서울특별시 은평구 녹번동"},
+                {region: "서울특별시 은평구 불광1동"},
+                {region: "서울특별시 은평구 불광2동"},
+                {region: "서울특별시 은평구 갈현1동"},
+                {region: "서울특별시 은평구 갈현2동"},
+                {region: "서울특별시 은평구 구산동"},
+                {region: "서울특별시 은평구 대조동"},
+                {region: "서울특별시 은평구 응암1동"},
+                {region: "서울특별시 은평구 응암2동"},
+                {region: "서울특별시 은평구 응암3동"},
+                {region: "서울특별시 은평구 역촌동"},
+                {region: "서울특별시 은평구 역촌동"},
+                {region: "서울특별시 은평구 신사1동"},
+                {region: "서울특별시 은평구 신사2동"},
+                {region: "서울특별시 은평구 증산동"},
+                {region: "서울특별시 은평구 수색동"},
+                {region: "서울특별시 은평구 진관동"}
             ]
         };
     }
 
     componentDidMount() {
         this.props.onChangeTitle("위치설정");
-    }
-
-    toggleItem = (text, index) => {
-        let list = this.state.list;
-        list[index].selected = !list[index].selected;
-        this.setState({list: list});
+        this.props.onSetActionBarOnlyBackward();
     }
 
     render() {
+        let style = {
+            paddingTop: "50px"
+        }
         let currentLocationStyle = {
             textAlign: "center",
             padding: "8px 0",
@@ -50,14 +62,12 @@ class LocationContainer extends React.Component {
             fontSize: "18px"
         }
 
-        return <div>
+        return <div style={style}>
             <div style={currentLocationStyle}>현재위치 : {this.state.currentLocation}</div>
             <ul style={listStyle}>
                 {this.state.list.map((location, index) => {
                     return (
-                        <li style={listItemStyle} key={location.id} selected={location.selected} onClick={this.toggleItem.bind(this, location, index)}>{location.name}
-                            {location.selected?<FontAwesome name="check" style={checkStyle} />:null}
-                        </li>
+                        <li style={listItemStyle} key={index} onClick={() => {this.props.onSetLocation(location.region); browserHistory.push('/');}}>{location.region}</li>
                     )
                 })}
             </ul>
@@ -65,10 +75,16 @@ class LocationContainer extends React.Component {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
+let mapDispatchToProps = (dispatch, props) => {
     return {
         onChangeTitle: (title) => {
-            dispatch(changeTitle(title))
+            dispatch(changeTitle(title));
+        },
+        onSetActionBarOnlyBackward: () => {
+            dispatch(setActionBarOnlyBackward());
+        },
+        onSetLocation: (region) => {
+            dispatch(setLocation(region));
         }
     };
 };

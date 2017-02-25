@@ -13,7 +13,6 @@ import DetailContainer from './containers/DetailContainer';
 import ValidateContainer from './containers/ValidateContainer';
 import CardInfoContainer from './containers/CardInfoContainer';
 import AppReducer from './reducers/AppReducer';
-import DimmerReducer from './reducers/DimmerReducer';
 
 let store = createStore(AppReducer);
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 class ImageSliderItem extends React.Component {
 
@@ -22,10 +23,16 @@ class ImageSliderItem extends React.Component {
             opacity: 0
         }
         return <li style={style}>
-            <img src={this.props.imageUrl} style={imageStyle} />
+            <Link to={"/detail/"+this.props.id}>
+                <img src={this.props.imageUrl} style={imageStyle} />
+            </Link>
         </li>
     }
+}
 
+ImageSliderItem.PropTypes = {
+    id: React.PropTypes.number.isRequired,
+    imageUrl: React.PropTypes.string.isRequired
 }
 
 export default ImageSliderItem;

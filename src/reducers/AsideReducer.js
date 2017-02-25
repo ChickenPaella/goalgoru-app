@@ -1,6 +1,8 @@
 import { TOGGLE_ASIDE, CLOSE_ASIDE, OPEN_ASIDE } from "../actions/AsideAction.js";
 
-export const display = (state, action) => {
+let initState = {}
+
+export default (state=initState, action) => {
     switch(action.type) {
         case TOGGLE_ASIDE:
             return Object.assign({}, state, {
@@ -16,12 +18,5 @@ export const display = (state, action) => {
             });
         default:
             return state;
-    }
-}
-
-
-export const AsideReducer = (state={}, action) => {
-    return {
-        display: display(state.visible, action)
     }
 }

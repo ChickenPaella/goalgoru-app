@@ -8,9 +8,9 @@ class ImageSlider extends React.Component {
             runnable: undefined,
             active: 0,
             images: [
-                {imageUrl: "http://cfile5.uf.tistory.com/image/224E8F3E57148F7A0E43B5"},
-                {imageUrl: "http://img.tenasia.hankyung.com/webwp_kr/wp-content/uploads/2015/01/2015012014020420999-540x360.jpg"},
-                {imageUrl: "https://i.ytimg.com/vi/RPf-_DPqEpQ/maxresdefault.jpg"},
+                {id:1, imageUrl: "http://cfile5.uf.tistory.com/image/224E8F3E57148F7A0E43B5"},
+                {id:2, imageUrl: "http://img.tenasia.hankyung.com/webwp_kr/wp-content/uploads/2015/01/2015012014020420999-540x360.jpg"},
+                {id:3, imageUrl: "https://i.ytimg.com/vi/RPf-_DPqEpQ/maxresdefault.jpg"},
             ]
         }
     }
@@ -71,7 +71,7 @@ class ImageSlider extends React.Component {
         return <div style={style}>
             <ul style={imageWrapperStyle}>
                 {this.state.images.map((image, index) => {
-                    return <ImageSliderItem key={index} imageUrl={image.imageUrl} active={index==this.state.active}/>
+                    return <ImageSliderItem key={index} id={image.id} imageUrl={image.imageUrl} active={index==this.state.active}/>
                 })}
             </ul>
             <ul style={indicatorWrapper}>

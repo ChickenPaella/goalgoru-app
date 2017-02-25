@@ -4,7 +4,7 @@ const initState = {
     dimmed: false
 }
 
-export const dimmer = (state=initState, action) => {
+export default (state=initState, action) => {
     switch(action.type) {
         case DIMMING:
             return Object.assign({}, state, {
@@ -18,9 +18,3 @@ export const dimmer = (state=initState, action) => {
             return state;
     };
 };
-
-export const DimmerReducer = (state={}, action) => {
-    return {
-        dimmer: dimmer(state.dimmed, action)
-    }
-}

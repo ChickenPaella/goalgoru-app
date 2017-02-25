@@ -6,7 +6,8 @@ const initState = {
     content: null
 }
 
-export const popup = (state, action) => {
+export default (state=initState, action) => {
+    // console.log("PopupReducer", state, action);
     switch(action.type) {
         case OPEN_POPUP:
             return Object.assign({}, state, {
@@ -22,11 +23,5 @@ export const popup = (state, action) => {
             });
         default:
             return state;
-    }
-};
-
-export const PopupReducer = (state = initState, action) => {
-    return {
-        popup: popup(state.popup, action)
     }
 };

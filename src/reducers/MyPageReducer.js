@@ -2,7 +2,8 @@ import { PREV_MONTH, NEXT_MONTH,
          OPEN_VALIDATE_CONFIRM, CLOSE_VALIDATE_CONFIRM,
          OPEN_BADGE_ACQUIRED, CLOSE_BADGE_ACQUIRED } from "../actions/MyPageAction.js";
 
-export const mypage = (state, action) => {
+const initState = {}
+export default (state=initState, action) => {
     switch(action.type) {
         case PREV_MONTH:
             return Object.assign({}, state, {

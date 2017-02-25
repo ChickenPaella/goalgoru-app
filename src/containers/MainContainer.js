@@ -3,20 +3,30 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import FontAwesome from 'react-fontawesome';
 import { changeTitle, setActionBarBase } from '../actions/NavigationAction';
+import { setLocation } from '../actions/SearchAction';
 import ImageSlider from '../components/ImageSlider';
 import MenuList from '../components/MenuList';
 
 class MainContainer extends React.Component {
     constructor(args) {
         super(args);
-        this.state = {
-            locationName: "서울시 노원구 동원로"
-        };
+        this.getLocation = this.getLocation.bind(this);
     }
-    
+
     componentDidMount() {
         this.props.onChangeTitle("고루고루");
         this.props.onSetActionBarBase();
+        this.getLocation();
+    }
+
+    getLocation() {
+        if("geolocation" in navigator) {
+            // this.props.onSetLocation();
+            navigator.geolocation.getCurrentPosition((pos) => {
+                // console.log(pos.coords.latitude);
+                // console.log(pos.coords.longitude);
+            });
+        }
     }
 
     render() {
@@ -42,11 +52,17 @@ class MainContainer extends React.Component {
 
         return <div style={style}>
             <div style={linkWrapperStyle}>
-                <Link to='location' style={linkStyle}><FontAwesome name="map-marker" />&nbsp;&nbsp;{this.state.locationName}</Link>
+                <Link to='location' style={linkStyle}><FontAwesome name="map-marker" />&nbsp;&nbsp;{this.props.location}</Link>
             </div>
             <ImageSlider />
             <MenuList />
         </div>
+    }
+}
+
+let mapStateToProps = (state) => {
+    return {
+        location: state.search.location
     }
 }
 
@@ -57,10 +73,13 @@ let mapDispatchToProps = (dispatch) => {
         },
         onSetActionBarBase: () => {
             dispatch(setActionBarBase());
+        },
+        onSetLocation: (loc) => {
+            dispatch(setLocation(loc));
         }
     };
 };
 
-MainContainer = connect(undefined, mapDispatchToProps)(MainContainer);
+MainContainer = connect(mapStateToProps, mapDispatchToProps)(MainContainer);
 
 export default MainContainer;
