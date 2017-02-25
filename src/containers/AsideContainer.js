@@ -21,7 +21,7 @@ class AsideContainer extends React.Component {
             left: "0px",
             top: "0px",
             zIndex: "1000",
-            backgroundColor: "#ffffff",
+            backgroundColor: "#efefef",
             borderWidth: "0px 1px 0px 0px",
             borderStyle: "solid",
             borderColor: "#888888"
@@ -31,24 +31,19 @@ class AsideContainer extends React.Component {
             position: "absolute",
             right: "0px",
             top: "0px",
-            padding: "12px 16px",
-            color: "#888888",
+            fontSize: "14px",
+            padding: "20px 20px",
+            color: "#444444",
             textDecoration: "none"
         }
 
         let loginButtonStyle = {
-            textDecoration: "none",
-            backgroundColor: "#ffef3f",
-            border: "1px solid #ffde00",
-            color:"#333333",
-            borderRadius: "5px",
+            fontSize: "14px",
+            display:"inline-block",
             padding: "12px 24px",
             textAlign: "center",
             position: "relative",
-            top: "100px",
-            left: "50%",
-            marginLeft: "-98px",
-            width: "220px"
+            width: "232px"
         }
 
         let profileWrapperstyle = {
@@ -58,8 +53,8 @@ class AsideContainer extends React.Component {
 
         return this.props.active?<div style={style}>
             <div style={profileWrapperstyle}>
-            {this.props.isLogin?
-                <ProfileImage imageUrl={this.props.profileImage} />:<a style={loginButtonStyle} href={this.state.loginUrl}>카카오계정으로 로그인</a>}
+            <ProfileImage imageUrl={this.props.isLogin?this.props.profileImage:"/assets/images/men_prof.png"} />
+            {!this.props.isLogin?<a style={loginButtonStyle} href={this.state.loginUrl}>카카오계정으로 로그인</a>:null}
             </div>
             <a style={closeButtonStyle} onClick={this.props.onCloseAside}>닫기</a>
             <AsideMenu />

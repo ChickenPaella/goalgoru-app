@@ -6,12 +6,12 @@ class ProfileImage extends React.Component {
             backgroundPoisition: "center",
             backgroundSize: "cover",
             backgroundImage: "url("+this.props.imageUrl+")",
-            width: "120px",
-            height: "120px",
-            margin: "56px auto 28px",
+            width: "92px",
+            height: "92px",
+            margin: "56px auto 8px",
             borderWidth: "1px",
             borderStyle: "solid",
-            borderColor: "#dfdfdf",
+            borderColor: "rgb(88, 54, 201)",
             borderRadius: "999px"
         }
         let imageStyle = {

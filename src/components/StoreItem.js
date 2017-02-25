@@ -1,4 +1,6 @@
 import React from "react";
+import { dimming, undimming } from "../actions/DimmerAction";
+import { connect } from "react-redux";
 
 class StoreItem extends React.Component {
   constructor(props, context) {
@@ -15,10 +17,10 @@ class StoreItem extends React.Component {
 
   render() {
     let style = {
+    "float": "left",
       "position": "relative",
       "display": "inline-block",
-      "width": "150px",
-      "margin": "5px",
+      "width": "50%",
       "backgroundColor": "#FFFFFF"
     };
 
@@ -66,17 +68,31 @@ class StoreItem extends React.Component {
       "textAlign": "center",
       "width": "100%"
     };
+    let innerStyle = {
+        position: "relative",
+        marginTop: "3%",
+        marginLeft: "4%",
+        marginRight: "2%"
+    }
+    if(this.props.index % 2 == 1) {
+        innerStyle = Object.assign({}, innerStyle, {
+            marginLeft: "2%",
+            marginRight: "4%"
+        })
+    }
 
     let disabledButtonStyle = Object.assign({}, buttonStyle, {"color": "#EFEFEF"});
 
     return (
       <div style={style}>
+        <div style={innerStyle}>
         <span style={purchasedStyle}>결제완료</span>
         <span style={imageStyle}></span>
         <span style={descStyle}>[{this.props.storeName}] {this.props.menuName}</span>
         <span style={starStyle}><span style={{"color": "#FC4356"}}>★</span> {this.props.price}</span>
         <button style={(this.state.star < this.props.price)?disabledButtonStyle:buttonStyle}
                 >구매하기</button>
+        </div>
       </div>
     );
   }
@@ -90,5 +106,22 @@ StoreItem.defaultProps = {
   'menuImage': 'http://img.kookmincoupon.com/upload/company_images/i1748514096497562605.jpg',
   'price': 2
 };
+
+let mapStateToProps = (state) => {
+    return {}
+}
+
+let mapDispatchToPros = (dispatch) => {
+    return {
+        onDimming: () => {
+            dispatch(dimming());
+        },
+        onUndimming: () => {
+            dispatch(undimming());
+        }
+    }
+}
+
+StoreItem = connect(mapStateToProps, mapDispatchToPros)(StoreItem);
 
 export default StoreItem;

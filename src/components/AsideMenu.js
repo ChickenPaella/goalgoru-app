@@ -20,7 +20,9 @@ class AsideMenu extends React.Component {
             listStyle: "none",
             padding: "0px",
             margin: "0px",
+            backgroundColor:"#ffffff",
             borderStyle: "solid",
+            height: "1000px",
             borderWidth: "0px 0px 1px 0px",
             borderColor: "#dfdfdf"
         }

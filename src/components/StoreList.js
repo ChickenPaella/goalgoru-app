@@ -80,7 +80,6 @@ class StoreList extends React.Component {
 
     render() {
       let style = {
-        "textAlign": "center",
         "backgroundColor": "#EFEFEF"
       };
 
@@ -91,6 +90,7 @@ class StoreList extends React.Component {
         return data.map((item, i) => {
           return (<StoreItem
                       key={item.menu.id}
+                      index={i}
                       storeName={item.store.name}
                       menuId={item.menu.id}
                       menuName={item.menu.name}
