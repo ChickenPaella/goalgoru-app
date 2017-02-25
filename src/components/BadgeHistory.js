@@ -11,19 +11,64 @@ class BadgeHistory extends React.Component {
           'menu': {'id': 'menu001', 'name': '김치찌개'},
           'store': {'id': 'store001', 'name': '골고루 식당'},
           'date': 1487475346403,
-          'isValidated': false
+          'isValidated': false,
+          'badgeType': '지방'
         }, {
           'id': 'history002',
           'menu': {'id': 'menu002', 'name': '된장찌개'},
           'store': {'id': 'store001', 'name': '골고루 식당'},
           'date': 1487475399460,
-          'isValidated': true
+          'isValidated': true,
+          'badgeType': '탄수화물'
         }, {
           'id': 'history003',
           'menu': {'id': 'menu003', 'name': '불고기 백반'},
           'store': {'id': 'store001', 'name': '골고루 식당'},
           'date': 1487475412966,
-          'isValidated': true
+          'isValidated': true,
+          'badgeType': '단백질'
+        },{
+          'id': 'history004',
+          'menu': {'id': 'menu001', 'name': '김치찌개'},
+          'store': {'id': 'store001', 'name': '골고루 식당'},
+          'date': 1487475346403,
+          'isValidated': false,
+          'badgeType': '지방'
+        }, {
+          'id': 'history005',
+          'menu': {'id': 'menu002', 'name': '된장찌개'},
+          'store': {'id': 'store001', 'name': '골고루 식당'},
+          'date': 1487475399460,
+          'isValidated': true,
+          'badgeType': '탄수화물'
+        }, {
+          'id': 'history006',
+          'menu': {'id': 'menu003', 'name': '불고기 백반'},
+          'store': {'id': 'store001', 'name': '골고루 식당'},
+          'date': 1487475412966,
+          'isValidated': true,
+          'badgeType': '단백질'
+        },{
+          'id': 'history007',
+          'menu': {'id': 'menu001', 'name': '김치찌개'},
+          'store': {'id': 'store001', 'name': '골고루 식당'},
+          'date': 1487475346403,
+          'isValidated': false,
+          'badgeType': '지방'
+        }, {
+          'id': 'history008',
+          'menu': {'id': 'menu002', 'name': '된장찌개'},
+          'store': {'id': 'store001', 'name': '골고루 식당'},
+          'date': 1487475399460,
+          'isValidated': true,
+          'badgeType': '탄수화물'
+        }, {
+          'id': 'history009',
+          'menu': {'id': 'menu003', 'name': '불고기 백반'},
+          'store': {'id': 'store001', 'name': '골고루 식당'},
+          'date': 1487475412966,
+          'isValidated': true,
+          'badgeType': '단백질'
         }]
       };
     }
@@ -42,6 +87,7 @@ class BadgeHistory extends React.Component {
                       storeName={item.store.name}
                       date={item.date}
                       isValidated={item.isValidated}
+                      badgeType={item.badgeType}
                       />);
         });
       };
@@ -50,6 +96,7 @@ class BadgeHistory extends React.Component {
           listStyle: "none",
           padding: "0px",
           margin: "0px",
+          backgroundColor: "#FFFFFF",
           borderStyle: "solid",
           borderWidth: "0px 0px 1px 0px",
           borderColor: "#dfdfdf"

@@ -16,31 +16,31 @@ class BadgeHistoryItem extends React.Component {
         };
 
         let titleStyle = {
-          display: "block",
-          fontWeight: "bold"
+          display: "block"
         };
 
         let descStyle = {
-          display: "block"
+          display: "block",
+          fontSize: "0.8em",
+          boxSizing: "border-box",
+          paddingRight: "100px",
+          height: "1em",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap"
         };
 
         let badgeStyle = {
           position: "absolute",
           right: "20px",
           top: "20px",
-          height: "2em"
+          lineHeight: "2em",
+          fontSize: "1em",
+          color: "#AAAAAA",
+          textDecoration: "none"
         };
 
-        let buttonStyle = {
-          "position": "absolute",
-          "right": "20px",
-          "top": "20px",
-          "height": "2em",
-          "lineHeight": "2em",
-          "backgroundColor": "#6C3AC0",
-          "padding": "0px 10px",
-          "color": "#FFFFFF"
-        };
+        let buttonStyle = Object.assign({}, badgeStyle, {color: "#FF4955"})
 
         const getHistoryDate = () => {
           let tmpDate = new Date(this.props.date);
@@ -85,12 +85,22 @@ class BadgeHistoryItem extends React.Component {
             <span style={descStyle}>{getHistoryDate()} | {this.props.storeName}</span>
             {
               (this.props.isValidated) ?
-              <img style={badgeStyle} src="//placehold.it/30x30?text=뱃지" /> :
-              <Link to={"validate"} style={buttonStyle}>인증하기</Link>
+              <span style={badgeStyle}>{this.props.badgeType}</span> :
+              <Link to={"validate"} style={buttonStyle}>+ 인증하기</Link>
             }
           </li>
         );
     }
 }
+
+BadgeHistoryItem.defaultProps = {
+  "menuId": "0",
+  "menuName": "",
+  "storeId": "0",
+  "storeName": "",
+  "date": 0,
+  "isValidated": false,
+  "badgeType": ""
+};
 
 export default BadgeHistoryItem;
