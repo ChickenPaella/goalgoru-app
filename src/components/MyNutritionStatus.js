@@ -1,15 +1,12 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import { PieChart, Pie } from 'recharts';
+import { connect } from 'react-redux';
+import { prevMonth, nextMonth } from '../actions/MyPageAction';
 
 class MyNutritionStatus extends React.Component {
     constructor(props, context) {
         super(props, context);
-
-        this.state = {
-          year: 2017,
-          month: 2
-        };
     }
 
     render() {
@@ -79,11 +76,11 @@ class MyNutritionStatus extends React.Component {
 
         return (
           <div style={style}>
-            <div style={prevButtonWrapStyle}>
+            <div style={prevButtonWrapStyle} onClick={this.props.onPrevMonth}>
               <FontAwesome name="angle-left" style={navButtonStyle} />
             </div>
 
-            <span style={titleStyle}>{this.state.year}년 {this.state.month}월</span>
+            <span style={titleStyle}>{this.props.date}년 {this.props.date}월</span>
             <div style={{"textAlign": "center"}}>
               <PieChart width={300} height={300} style={{"display": "inline-block"}}>
                 <Pie data={data} cx="50%" cy="50%" outerRadius={50} fill="#F3EA52" />
@@ -93,12 +90,31 @@ class MyNutritionStatus extends React.Component {
 
             <span style={descStyle}>식사 인증 가능기간은 식사일로부터 일주일입니다.<br />미인증 식사 개수: 1개</span>
 
-            <div style={nextButtonWrapStyle}>
+            <div style={nextButtonWrapStyle} onClick={this.props.onNextMonth}>
               <FontAwesome name="angle-right" style={navButtonStyle} />
             </div>
           </div>
         );
     }
 }
+
+let mapStateToProps = (state) => {
+    return {
+        date: state.mypage.date
+    };
+};
+
+let mapDispatchToProps = (dispatch) => {
+    return {
+      onPrevMonth: () => {
+          dispatch(prevMonth());
+      },
+      onNextMonth: () => {
+          dispatch(nextMonth());
+      }
+    };
+};
+
+MyNutritionStatus = connect(mapStateToProps, mapDispatchToProps)(MyNutritionStatus);
 
 export default MyNutritionStatus;

@@ -2,13 +2,21 @@ import { PREV_MONTH, NEXT_MONTH,
          OPEN_VALIDATE_CONFIRM, CLOSE_VALIDATE_CONFIRM,
          OPEN_BADGE_ACQUIRED, CLOSE_BADGE_ACQUIRED } from "../actions/MyPageAction.js";
 
-export const mypage = (state, action) => {
+let initState = {
+  date: new Date(),
+  validateConfirmVisible: false,
+  badgeAcquiredVisible: false
+};
+
+export const mypage = (state = initState, action) => {
     switch(action.type) {
         case PREV_MONTH:
             return Object.assign({}, state, {
+              date: state.date.setMonth(state.date.getMonth() - 1)
             });
         case NEXT_MONTH:
             return Object.assign({}, state, {
+              date: state.date.setMonth(state.date.getMonth() + 1)
             });
         case OPEN_VALIDATE_CONFIRM:
             return Object.assign({}, state, {
