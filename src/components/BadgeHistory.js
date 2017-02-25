@@ -36,8 +36,10 @@ class BadgeHistory extends React.Component {
         return data.map((item, i) => {
           return (<BadgeHistoryItem
                       key={item.id}
-                      menu={item.menu}
-                      store={item.store}
+                      menuId={item.menu.id}
+                      menuName={item.menu.name}
+                      storeId={item.store.id}
+                      storeName={item.store.name}
                       date={item.date}
                       isValidated={item.isValidated}
                       />);

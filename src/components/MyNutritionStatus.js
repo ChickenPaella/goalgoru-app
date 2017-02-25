@@ -1,5 +1,6 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
+import { PieChart, Pie } from 'recharts';
 
 class MyNutritionStatus extends React.Component {
     constructor(props, context) {
@@ -61,6 +62,21 @@ class MyNutritionStatus extends React.Component {
           right: "0px"
         };
 
+        /* Graph 처리 */
+        let data = [{name: 'Group A', value: 400}, {name: 'Group B', value: 300}, {name: 'Group C', value: 300}, {name: 'Group D', value: 200}];
+        const RADIAN = Math.PI / 180;
+        const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+         	const radius = outerRadius * 1.3;
+          const x = cx + radius * Math.cos(-midAngle * RADIAN);
+          const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+          return (
+            <text x={x} y={y} fill="#6C3AC0" textAnchor={x > cx ? 'start' : 'end'} 	dominantBaseline="central">
+              {`${(percent * 100).toFixed(0)}%`}
+            </text>
+          );
+        };
+
         return (
           <div style={style}>
             <div style={prevButtonWrapStyle}>
@@ -68,7 +84,12 @@ class MyNutritionStatus extends React.Component {
             </div>
 
             <span style={titleStyle}>{this.state.year}년 {this.state.month}월</span>
-            <div><img style={chartStyle} src="//placehold.it/300x300?text=CHART AREA" /></div>
+            <div style={{"textAlign": "center"}}>
+              <PieChart width={300} height={300} style={{"display": "inline-block"}}>
+                <Pie data={data} cx="50%" cy="50%" outerRadius={50} fill="#F3EA52" />
+                <Pie data={data} cx="50%" cy="50%" innerRadius={60} outerRadius={80} fill="#6C3AC0" label={renderCustomizedLabel} />
+              </PieChart>
+            </div>
 
             <span style={descStyle}>식사 인증 가능기간은 식사일로부터 일주일입니다.<br />미인증 식사 개수: 1개</span>
 
