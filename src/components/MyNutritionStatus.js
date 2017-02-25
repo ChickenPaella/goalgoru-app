@@ -22,7 +22,7 @@ class MyNutritionStatus extends React.Component {
         let style = {
           textAlign: "center",
           position: "relative",
-          padding: "20px 40px",
+          padding: "10px 40px 30px 40px",
           color: "#FFFFFF",
           backgroundColor: "#6C3AC0"
         };

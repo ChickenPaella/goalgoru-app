@@ -56,7 +56,8 @@ class CardInfo extends React.Component {
         "boxSizing": "border-box",
         "fontWeight": "300",
         "padding": "0px",
-        "textIndent": "0px"
+        "textIndent": "0px",
+        "textAlign": "center"
       };
 
       let cardDescStyle = {

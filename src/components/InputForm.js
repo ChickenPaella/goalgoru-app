@@ -5,7 +5,8 @@ class InputForm extends React.Component {
     super(props, context);
 
     this.state = {
-      "focused": false
+      "focused": false,
+      "value": this.props.value
     };
 
     this.focus = this.focus.bind(this);
@@ -23,42 +24,44 @@ class InputForm extends React.Component {
   render() {
     let style = {
       "width": this.props.width,
-      "padding": "10px",
+      "padding": "10px 0px",
       "boxSizing": "border-box",
-      "display": "inline-block"
+      "display": "inline-block",
+      "marginRight": "0px",
+      "verticalAlign": "bottom"
     };
 
     let titleStyle = {
-      "fontSize": "0.8em"
+      "fontSize": "0.6em",
+      "textAlign": this.props.align,
+      "fontWeight": "300"
     };
-
-    let focusedTitleStyle = {
-      "fontSize": "0.8em",
-      "color": "#6C40BD"
-    };
+    let blurredTitleStyle = Object.assign({}, titleStyle, {"color": "#A3A3A3"});
+    let focusedTitleStyle = Object.assign({}, titleStyle, {"color": "#6C40BD"});
 
     let textStyle = {
       "width": "100%",
       "border": "none",
-      "borderBottom": "2px solid #EFEFEF"
+      "textAlign": this.props.align,
+      "borderBottom": "2px solid #EFEFEF",
+      "boxSizing": "border-box",
+      "borderRadius": "0px",
+      "color": this.props.color
     };
-
-    let focusedTextStyle = {
-      "width": "100%",
-      "border": "none",
-      "borderBottom": "2px solid #6C40BD"
-    };
+    let blurredTextStyle = Object.assign({}, textStyle, {"borderBottom": "2px solid #EFEFEF"});
+    let focusedTextStyle = Object.assign({}, textStyle, {"borderBottom": "2px solid #6C40BD"});
 
     return (
       <div style={style}>
-        <div style={(!this.props.readOnly && this.state.focused) ? focusedTitleStyle : titleStyle}>{this.props.title}</div>
+        <div style={(!this.props.readOnly && this.state.focused) ? focusedTitleStyle : blurredTitleStyle}>{this.props.title}</div>
         <input type="text"
                name={this.props.name}
                onFocus={() => this.focus()}
                onBlur={() => this.blur()}
-               style={(!this.props.readOnly && this.state.focused) ? focusedTextStyle : textStyle}
+               onChange={(e) => this.setState({"value": e.target.value})}
+               style={(!this.props.readOnly && this.state.focused) ? focusedTextStyle : blurredTextStyle}
                readOnly={this.props.readOnly ? "readOnly" : ""}
-               value={(this.props.value !== "") ? this.props.value : ""}
+               value={this.state.value}
         />
       </div>
     );
@@ -70,7 +73,9 @@ InputForm.defaultProps = {
   "title": "",
   "width": "100%",
   "value": "",
-  "readOnly": false
+  "readOnly": false,
+  "align": "left",
+  "color": "#000000"
 };
 
 export default InputForm;
