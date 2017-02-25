@@ -7,6 +7,7 @@ class StoreItem extends React.Component {
 
   render() {
     let style = {
+      "position": "relative",
       "display": "inline-block",
       "width": "150px",
       "margin": "5px",
@@ -15,18 +16,38 @@ class StoreItem extends React.Component {
 
     let imageStyle = {
       "display": "inline-block",
-      "backgroundImage": "",
+      "backgroundImage": "url('http://img.kookmincoupon.com/upload/company_images/i1748514096497562605.jpg')",
       "backgroundSize": "cover",
       "width": "100%",
-      "height": "100px"
+      "height": "120px"
     };
 
     let descStyle = {
-
+      "height": "2em",
+      "display": "block",
+      "padding": "5px 5%",
+      "overflow": "hidden"
     };
 
     let purchasedStyle = {
+      "position": "absolute",
+      "top": "0px",
+      "right": "0px",
+      "fontSize": "0.8em",
+      "padding": "5px",
+      "backgroundColor": "#404040",
+      "color": "#FFFFFF",
+      "opacity": "0.7"
+    };
 
+    let buttonStyle = {
+      "marginTop": "5px",
+      "border": "none",
+      "backgroundColor": "#FFFFFF",
+      "color": "#FC4356",
+      "padding": "10px",
+      "textAlign": "center",
+      "width": "100%"
     };
 
     return (
@@ -34,8 +55,8 @@ class StoreItem extends React.Component {
         <span style={purchasedStyle}>결제완료</span>
         <span style={imageStyle}></span>
         <span>[{this.props.store.name}] {this.props.menu.name}</span>
-        <span><span style={{"color": "#FF0000"}}>★</span> {this.props.price}</span>
-        <button>구매하기</button>
+        <span><span style={{"color": "#FC4356"}}>★</span> {this.props.price}</span>
+        <button style={buttonStyle}>구매하기</button>
       </div>
     );
   }
