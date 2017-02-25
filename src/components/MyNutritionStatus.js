@@ -69,9 +69,23 @@ class MyNutritionStatus extends React.Component {
         let prevButtonWrapStyle = Object.assign({}, buttonWrapStyle, {"left":  "0px"});
         let nextButtonWrapStyle = Object.assign({}, buttonWrapStyle, {"right": "0px"});
 
+        let indexStyle = {
+          fontSize: "0.8em",
+          marginBottom: "10px"
+        };
+
+        const COLOR_FAT = "#fcf41e";
+        const COLOR_PROTEIN = "#ffffff";
+        const COLOR_CARBS = "#ff8b36";
+
+        const mapToComponents = (data) => {
+          return data.map((item, i) => {
+            return (<span style={{color: item.color, padding: "0px 5px"}}>■ {item.name}</span>);
+          });
+        };
+
         /* Graph 처리 */
-        let data = [{name: '단', value: 90}, {name: '탄', value: 5}, {name: '지', value: 5}];
-        const COLORS = ['#fcf41e', '#ff8b36', '#ffffff'];
+        let data = [{name: '단백질', value: 90, color: "#ff8b36"}, {name: '탄수화물', value: 5, color: "#FFFFFF"}, {name: '지방', value: 5, color: "#fcf41e"}];
         const RADIAN = Math.PI / 180;
         const percentLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
          	const radius = outerRadius * 0.5;
@@ -107,9 +121,12 @@ class MyNutritionStatus extends React.Component {
             <div style={{"textAlign": "center"}}>
               <PieChart width={this.state.width / 2} height={this.state.width / 2} style={{"display": "inline-block", "margin": "20px"}}>
                 <Pie data={data} outerRadius={this.state.width / 4} fill="#F3EA52" label={percentLabel} labelLine={false} stroke="none">
-                  {data.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)}
+                  {data.map((entry, index) => <Cell fill={entry.color}/>)}
                 </Pie>
               </PieChart>
+              <div style={indexStyle}>
+                {mapToComponents(data)}
+              </div>
             </div>
 
             <span style={unauthStyle}>
