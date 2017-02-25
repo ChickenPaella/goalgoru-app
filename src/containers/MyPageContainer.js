@@ -12,7 +12,8 @@ class MyPageContainer extends React.Component {
 
     render() {
         let style = {
-          "marginTop": "50px"
+          paddingTop: "50px",
+          backgroundColor: "#6C3AC0"
         };
 
         return (

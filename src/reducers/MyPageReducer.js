@@ -10,10 +10,11 @@ let initState = {
 };
 
 export default (state=initState, action) => {
+    var tmpDate = new Date();
+    tmpDate.setYear(state.year);
+
     switch(action.type) {
         case PREV_MONTH:
-            var tmpDate = new Date();
-            tmpDate.setYear(state.year);
             tmpDate.setMonth(state.month - 1);
 
             return Object.assign({}, state, {
@@ -21,8 +22,6 @@ export default (state=initState, action) => {
               month: tmpDate.getMonth()
             });
         case NEXT_MONTH:
-            var tmpDate = new Date();
-            tmpDate.setYear(state.year);
             tmpDate.setMonth(state.month + 1);
 
             return Object.assign({}, state, {

@@ -9,7 +9,7 @@ class AsideMenu extends React.Component {
             menus: [
                 {name: "홈", path:"/", active:router.isActive("/", true)},
                 {name: "나의 상태", path:"/my", active:router.isActive("/my")},
-                {name: "포인트몰", path:"/reward", active:router.isActive("/reward")},
+                {name: "별별스토어", path:"/reward", active:router.isActive("/reward")},
                 {name: "내 카드 정보", path:"/card", active:router.isActive("/card")},
             ]
         }
