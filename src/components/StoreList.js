@@ -80,7 +80,8 @@ class StoreList extends React.Component {
 
     render() {
       let style = {
-        "textAlign": "center"
+        "textAlign": "center",
+        "backgroundColor": "#EFEFEF"
       };
 
       const mapToComponents = (data) => {

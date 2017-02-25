@@ -6,13 +6,13 @@ import { changeTitle } from '../actions/NavigationAction';
 
 class RewardContainer extends React.Component {
   componentDidMount() {
-      this.props.onChangeTitle("포인트몰");
+      this.props.onChangeTitle("별별스토어");
   }
 
   render() {
     let style = {
-      "marginTop": "50px",
-      "backgroundColor": "#EFEFEF"
+      "paddingTop": "50px",
+      "backgroundColor": "#6C3AC0"
     };
 
     return (

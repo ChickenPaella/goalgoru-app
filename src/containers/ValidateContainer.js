@@ -1,7 +1,7 @@
 import React from 'react';
 import Validate from '../components/Validate';
 import { connect } from 'react-redux';
-import { changeTitle } from '../actions/NavigationAction';
+import { changeTitle, setActionBarOnlyBackward } from '../actions/NavigationAction';
 
 class ValidateContainer extends React.Component {
     constructor(props) {
@@ -10,11 +10,13 @@ class ValidateContainer extends React.Component {
 
     componentDidMount() {
         this.props.onChangeTitle("인증하기");
+        this.props.setActionBar();
     }
 
     render() {
         let style = {
-          "marginTop": "50px"
+          "paddingTop": "50px",
+          "backgroundColor": "#6C3AC0"
         };
 
         return(
@@ -29,6 +31,9 @@ let mapDispatchToProps = (dispatch) => {
     return {
         onChangeTitle: (title) => {
             dispatch(changeTitle(title));
+        },
+        setActionBar: () => {
+          dispatch(setActionBarOnlyBackward());
         }
     };
 };
