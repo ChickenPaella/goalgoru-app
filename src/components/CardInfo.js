@@ -38,11 +38,11 @@ class CardInfo extends React.Component {
         "boxSizing": "border-box",
         "backgroundColor": "#FFFFFF",
         "borderRadius": "9px",
-        "padding": "60px 15px 15px 15px",
+        "padding": "60px 30px 15px 30px",
         "margin": "40px auto",
         "backgroundImage": "url('../assets/images/myc_title.png')",
         "backgroundSize": "30%",
-        "backgroundPosition": "20px 20px",
+        "backgroundPosition": "30px 25px",
         "backgroundRepeat": "no-repeat"
       };
 
@@ -52,11 +52,12 @@ class CardInfo extends React.Component {
         "width": "100%",
         "margin": "auto",
         "display": "block",
-        "fontSize": "1.5em",
+        "fontSize": "1.2em",
         "boxSizing": "border-box",
         "fontWeight": "300",
         "padding": "0px",
-        "textIndent": "0px"
+        "textIndent": "0px",
+        "borderRadius": "0px"
       };
 
       let cardDescStyle = {
@@ -67,14 +68,15 @@ class CardInfo extends React.Component {
       let cardOwnerStyle = {
         "lineHeight": "2em",
         "fontSize": "0.8em",
-        "marginTop": "15px"
+        "marginTop": "40px"
       };
 
       let cardOwnerImageStyle = {
         "maxHeight": "2em",
         "maxWidth": "2em",
         "verticalAlign": "middle",
-        "borderRadius": "2em"
+        "borderRadius": "2em",
+        "marginRight": "8px"
       };
 
       let descStyle = {
@@ -109,7 +111,7 @@ class CardInfo extends React.Component {
       return (
         <div style={style}>
           <div style={cardStyle}>
-            <input style={cardNumberStyle} type="text" onChange={this.reformCardNumber} placeholder="1111-2222-3333-4444" value={this.state.cardNumber} />
+            <input style={cardNumberStyle} type="text" onChange={this.reformCardNumber} placeholder="1234-1234-1234-1234" value={this.state.cardNumber} />
             <span style={cardDescStyle}>소지하고 계신 꿈나무 카드 번호를 입력해주세요.</span>
             <div style={cardOwnerStyle}>
               <img style={cardOwnerImageStyle} src="https://search.pstatic.net/common?type=o&size=120x150&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F201606%2F20160623184934118.jpg" />
@@ -138,7 +140,7 @@ class CardInfo extends React.Component {
             </p>
           </div>
 
-          <button style={buttonStyle}>카드 번호 저장</button>
+          <button style={buttonStyle}>저장하기</button>
         </div>
       );
     }
