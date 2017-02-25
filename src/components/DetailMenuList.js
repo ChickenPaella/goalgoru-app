@@ -5,7 +5,6 @@ import DetailMenuItem from './DetailMenuItem';
 
 class DetailMenuList extends React.Component {
     render() {
-        console.log(this.props.menus);
         let style = {
             position: "relative",
             top: "-6px",

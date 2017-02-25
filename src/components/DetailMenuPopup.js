@@ -98,7 +98,6 @@ class DetailMenuPopup extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-    console.log(state.popup.content);
     return {
         visible: state.popup.visible,
         title: state.popup.title,

@@ -17,7 +17,6 @@ class DetailContainer extends React.Component {
     componentDidMount() {
         getRestaurantDetail(this.state.id, (data) => {
             if(!!data) {
-                console.log(data);
                 let newState =  {
                     mapUrl : "http://map.daum.net/link/map/"+encodeURIComponent(data.name)+","+data.location.latitude+","+data.location.longitude,
                     name: data.name,
@@ -27,7 +26,6 @@ class DetailContainer extends React.Component {
                 this.setState(newState);
                 this.props.onSetMap(newState.mapUrl);
             }
-            console.log(this.state.id, data.location);
         });
         window.scrollTo(0, 0);
         window.addEventListener('scroll', this.handleScroll);
@@ -111,7 +109,6 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
     return {
         onSetMap: (mapUrl) => {
-            console.log("mapUrl", mapUrl);
             dispatch(setMapLink(mapUrl));
         },
         onInit: () => {

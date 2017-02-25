@@ -21,6 +21,7 @@ class AsideMenuItem extends React.Component {
 
         if(this.props.index == 3) {
             style = Object.assign({}, style, {
+                fontSize: "14px",
                 position: "fixed",
                 bottom: 0,
                 left: 0,
