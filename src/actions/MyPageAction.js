@@ -1,19 +1,19 @@
-export const PREV_WEEK = "PREV_WEEK";
-export const NEXT_WEEK = "NEXT_WEEK";
+export const PREV_MONTH = "PREV_MONTH";
+export const NEXT_MONTH = "NEXT_MONTH";
 export const OPEN_VALIDATE_CONFIRM = "OPEN_VALIDATE_CONFIRM";
 export const CLOSE_VALIDATE_CONFIRM = "CLOSE_VALIDATE_CONFIRM";
 export const OPEN_BADGE_ACQUIRED = "OPEN_BADGE_ACQUIRED";
 export const CLOSE_BADGE_ACQUIRED = "CLOSE_BADGE_ACQUIRED";
 
-export function prevWeek() {
+export function prevMonth() {
     return {
-        type: PREV_WEEK
+        type: PREV_MONTH
     };
 }
 
-export function nextWeek() {
+export function nextMonth() {
     return {
-        type: NEXT_WEEK
+        type: NEXT_MONTH
     };
 }
 

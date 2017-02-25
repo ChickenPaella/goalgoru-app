@@ -7,10 +7,8 @@ let initState = {
 }
 
 export default (state=initState, action) => {
-    console.log("NavigationReducer", state, action);
     switch (action.type) {
         case CHANGE_TITLE:
-            console.log(action.title);
             return Object.assign({}, state, {
                 title: action.title
             });

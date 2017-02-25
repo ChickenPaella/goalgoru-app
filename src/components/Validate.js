@@ -1,6 +1,7 @@
 import React from "react";
 import FontAwesome from "react-fontawesome";
 import InputForm from "./InputForm";
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { dimming, undimming } from '../actions/DimmerAction';
 import { openValidateConfirm, closeValidateConfirm,
@@ -13,7 +14,9 @@ class Validate extends React.Component {
         this.state = {
           "date": 0,
           "menu": {"id": "001", "name": "불고기 백반"},
-          "store": {"id": "001", "name": "골고루식당"}
+          "store": {"id": "001", "name": "골고루식당"},
+
+          "gotBadge": "단백질"
         };
     }
 
@@ -78,7 +81,17 @@ class Validate extends React.Component {
         "backgroundColor": "#6C3AC0",
         "color": "#FFFFFF",
         "border": "0px",
-        "borderRadius": "0px 0px 10px 10px"
+        "borderRadius": "0px 0px 10px 10px",
+        "textDecoration": "none",
+        "display": "inline-block",
+        "textAlign": "center"
+      };
+
+      let badgeStyle = {
+        "width": "80%",
+        "display": "block",
+        "margin": "auto",
+        "marginBottom": "10px"
       };
 
       const getDate = () => {
@@ -125,16 +138,23 @@ class Validate extends React.Component {
           <InputForm name="menu" title="음식명" width="100%" value={this.state.menu.name} readOnly={true}/>
           <InputForm name="authCode" title="영수증 번호" width="100%" />
 
-          <button style={buttonStyle} onClick={this.props.onOpenValidate}>제출하고 뱃지 받기</button>
+          <button style={buttonStyle} onClick={this.props.onOpenValidateConfirm}>제출하고 뱃지 받기</button>
 
           <div style={this.props.validateConfirmVisible?openedValidateConfirmStyle:{"display": "none"}}>
             <span style={alertTitleStyle}>뱃지를 받기 전에!</span>
             <span style={alertDescStyle}>실제 식사와 내용이 다를 경우 이용에 불편을 겪을 수 있습니다.<br />
             올바른 정보인지 다시 한 번 확인해주세요.</span>
-            <button style={alertButtonStyle} onClick={this.props.onCloseValidate}>확인</button>
+            <button style={alertButtonStyle} onClick={this.props.onCloseValidateConfirm}>확인</button>
           </div>
 
           <div style={this.props.badgeAcquiredVisible?openedBadgeAcquiredStyle:{"display": "none"}}>
+            <span style={alertTitleStyle}>뱃지 획득!</span>
+            <img style={badgeStyle} src="//placehold.it/200x200?text=갓뱃지" />
+            <span style={alertDescStyle}>
+              {this.state.gotBadge} 뱃지를 받았습니다.<br />
+              골고루 뱃지를 모으시면 별을 획득할 수 있습니다.
+            </span>
+            <Link to={"my"} style={alertButtonStyle} onClick={this.props.onCloseBadgeAcquired}>확인</Link>
           </div>
         </div>
       );
@@ -150,12 +170,16 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {
-      onOpenValidate: () => {
+      onOpenValidateConfirm: () => {
           dispatch(dimming());
           dispatch(openValidateConfirm());
       },
-      onCloseValidate: () => {
+      onCloseValidateConfirm: () => {
           dispatch(closeValidateConfirm());
+          dispatch(openBadgeAcquired());
+      },
+      onCloseBadgeAcquired: () => {
+          dispatch(closeBadgeAcquired());
           dispatch(undimming());
       }
     };

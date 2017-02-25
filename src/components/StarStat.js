@@ -15,12 +15,24 @@ class StarStat extends React.Component {
 
     render() {
       let style = {
+        "position": "relative",
         "backgroundColor": "#6C3AC0",
+        "backgroundImage": "url('../assets/images/bg_store.png')",
+        "backgroundSize": "contain",
+        "backgroundPosition": "right top",
+        "backgroundRepeat": "no-repeat",
+        "height": "150px",
         "color": "#FFFFFF"
       };
 
       let titleStyle = {
-        "fontStyle": "italic"
+        "fontStyle": "italic",
+        "position": "absolute",
+        "height": "3em",
+        "top": "-1.5em",
+        "bottom": "0px",
+        "left": "20px",
+        "margin": "auto"
       };
 
       let starBoldStyle = {
@@ -29,11 +41,17 @@ class StarStat extends React.Component {
       };
 
       let bigTextStyle = {
-        "textSize": "1.2em"
+        "fontSize": "1.5em"
       };
 
       let starStyle = {
-        "color": "#FC4356"
+        "position": "absolute",
+        "bottom": "55px",
+        "right": "57px",
+        "color": "#FC4356",
+        "width": "50px",
+        "fontSize": "1.5em",
+        "textAlign": "center"
       };
 
       return (
