@@ -31,6 +31,7 @@ class StoreItem extends React.Component {
       "backgroundImage": "url(' " + this.props.menuImage + "')",
       "backgroundSize": "contain",
       "backgroundPosition": "center center",
+      "backgroundRepeat": "no-repeat",
       "width": "100%",
       "height": "120px"
     };

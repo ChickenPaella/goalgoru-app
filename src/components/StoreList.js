@@ -40,7 +40,7 @@ class StoreList extends React.Component {
             'price': 3
           }, {
             'store': {'id': 'olleh', 'name': 'olleh'},
-            'menu': {'id': 'olleh_data_100', 'name': '데이터 쿠폰 100MB', 'image': '../assets/images/store/LG.png'},
+            'menu': {'id': 'olleh_data_100', 'name': '데이터 쿠폰 100MB', 'image': '../assets/images/store/Olleh.png'},
             'price': 3
           }, {
             'store': {'id': 'kakao_friends', 'name': '프렌즈'},
