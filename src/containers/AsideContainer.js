@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import AsideMenu from '../components/AsideMenu';
 import ProfileImage from '../components/ProfileImage';
 import { closeAside } from '../actions/AsideAction';
@@ -89,7 +90,7 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
     return {
         onSessonLogout: () => {
-            dispatch(sessionLogout());
+            location.href="/";
         },
         onCloseAside: () => {
             dispatch(undimming());
