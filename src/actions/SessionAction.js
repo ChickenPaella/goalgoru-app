@@ -2,6 +2,7 @@ export const SESSION_LOGIN = "SESSION_LOGIN";
 export const SESSION_LOGOUT = "SESSION_LOGOUT";
 export const SET_AUTH_TOKEN = "SET_AUTH_TOKEN";
 export const SET_USER_INFO = "SET_USER_INFO";
+export const SET_USER_NUTRI_INFO = "SET_USER_NUTRI_INFO";
 
 export function sessionLogin() {
     return {
@@ -27,5 +28,14 @@ export function setUserInfo(username, profileImage) {
         type: SET_USER_INFO,
         username: username,
         profileImage: profileImage
+    }
+}
+export function setUserNutriInfo(star, protein, carb, fat) {
+    return {
+        type: SET_USER_NUTRI_INFO,
+        star: star,
+        protein: protein,
+        carb: carb,
+        fat: fat
     }
 }

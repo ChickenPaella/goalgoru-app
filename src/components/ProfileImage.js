@@ -44,6 +44,8 @@ class ProfileImage extends React.Component {
         let boxWrapperStyle= {
             height: "75px",
             marginTop: "27px",
+            position:"absolute",
+            bottom: -1,
         }
         let boxStyle = {
             float:"left",
@@ -59,6 +61,33 @@ class ProfileImage extends React.Component {
             backgroundRepeat: "no-repeat",
             backgroundPositionX: "21px",
             backgroundPositionY: "13px",
+        }
+        let boxToLoginStyle = {
+            float:"left",
+            width: "70px",
+            height: "72px",
+            position: "relative",
+            backgroundColor: "#FFFFFF",
+            borderWidth: "1px 0 1px 0",
+            borderColor: "#f5f5f5",
+            borderStyle: "solid"
+        }
+        let toLoginStyle = {
+            float:"left",
+            width: "70px",
+            height: "73px",
+            position: "relative",
+            backgroundColor: "#FFFFFF",
+            borderWidth: "1px 0 1px 0",
+            borderColor: "#f5f5f5",
+            borderStyle: "solid"
+        }
+        let toLoginSpanStyle = {
+            display: "block",
+            fontSize: "14px",
+            textAlign: "center",
+            paddingTop: "21px",
+            color:"#a0a0a0"
         }
         let boxStyleInactive = {
             float:"left",
@@ -124,13 +153,16 @@ class ProfileImage extends React.Component {
                 <img style={imageStyle} src={this.props.imageUrl} />
                 </div>
                 <div style={nameStyle}>{this.props.username}</div>
-                <div style={starStyle}>보유한 별 <span style={boldStype}>총 15개</span></div>
-                {this.props.isLogin?<div style={boxWrapperStyle}>
-                    <div style={boxStyle}><span style={numberStyleActive}>1</span><span style={labelStyleActive}>적립하기</span></div>
-                    <div style={boxStyleInactive}><span style={numberStyleInActive}>4</span><span style={labelStyleInActive}>단백질</span><span style={plusStyle}></span></div>
-                    <div style={boxStyleInactive}><span style={numberStyleInActive}>0</span><span style={labelStyleInActive}>탄수화물</span><span style={plusStyle}></span></div>
-                    <div style={boxStyleInactive}><span style={numberStyleInActive}>3</span><span style={labelStyleInActive}>지방</span></div>
-                </div>:null}
+                {this.props.isLogin?<div style={starStyle}>보유한 별 <span style={boldStype}>총 15개</span></div>:null}
+                <div style={boxWrapperStyle}>
+                    {this.props.isLogin?
+                        <div style={boxStyle}><span style={numberStyleActive}>{this.props.star}</span><span style={labelStyleActive}>적립하기</span></div>:
+                        <div style={boxToLoginStyle}><span style={toLoginSpanStyle}>영양소가<br/>부족해요!</span></div>
+                    }
+                    <div style={boxStyleInactive}><span style={numberStyleInActive}>{this.props.protein}</span><span style={labelStyleInActive}>단백질</span><span style={plusStyle}></span></div>
+                    <div style={boxStyleInactive}><span style={numberStyleInActive}>{this.props.carb}</span><span style={labelStyleInActive}>탄수화물</span><span style={plusStyle}></span></div>
+                    <div style={boxStyleInactive}><span style={numberStyleInActive}>{this.props.fat}</span><span style={labelStyleInActive}>지방</span></div>
+                </div>
             </div>
     }
 }
@@ -140,13 +172,14 @@ let mapStateToProps = (state) => {
         imageUrl: state.session.profileImage,
         username: state.session.username,
         isLogin: state.session.isLogin,
+        star: state.session.star,
+        carb: state.session.carb,
+        fat: state.session.fat,
+        protein: state.session.protein
     }
 }
 
 ProfileImage = connect(mapStateToProps, undefined)(ProfileImage);
 
-ProfileImage.propTypes = {
-    imageUrl: React.PropTypes.string.isRequired
-}
 
 export default ProfileImage;

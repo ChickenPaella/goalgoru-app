@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { browserHistory } from 'react-router'
 import { connect } from 'react-redux';
-import { setAuthToken, setUserInfo } from '../actions/SessionAction';
+import { setAuthToken, setUserInfo, setUserNutriInfo } from '../actions/SessionAction';
 import { getUserInfo } from '../modules/ApiModule';
 
 class CallbackContainer extends React.Component {
@@ -20,7 +20,6 @@ class CallbackContainer extends React.Component {
     }
 
     getUserInfo() {
-        console.log(1);
         getUserInfo(this.state.token, (data) => {
             if(!!data) {
                 this.props.onSetUserInfo(data.name, data.profileImage);
@@ -50,6 +49,7 @@ let mapDispatchToProps = (dispatch) => {
         },
         onSetUserInfo: (username, profileImage) => {
             dispatch(setUserInfo(username, profileImage));
+            dispatch(setUserNutriInfo(1,4,0,5));
         }
     }
 }

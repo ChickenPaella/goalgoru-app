@@ -7,7 +7,7 @@ class DetailMenuList extends React.Component {
     render() {
         let style = {
             position: "relative",
-            top: "-6px",
+            top: "-1px",
             margin: 0,
             padding: 0,
             listStyle: "none"

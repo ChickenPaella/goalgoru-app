@@ -84,7 +84,7 @@ class LocationContainer extends React.Component {
 
         return <div style={style}>
             <div style={currentLocationStyle}>현재위치 : {this.props.currentLocation}</div>
-            <div style={listItemStyle} onClick={this.getLocation}>현재 내 위치로 검색</div>
+            <div style={listItemStyle} >현재 내 위치로 검색</div>
             <ul style={listStyle}>
                 {this.state.list.map((location, index) => {
                     return (

@@ -68,7 +68,7 @@ class AsideContainer extends React.Component {
 
         return this.props.active?<div style={style}>
             <div style={profileWrapperstyle}>
-            <ProfileImage imageUrl={this.props.isLogin?this.props.profileImage:"/assets/images/men_prof.png"} />
+            <ProfileImage />
             {!this.props.isLogin?<a style={loginButtonStyle} href={this.state.loginUrl}>카카오계정으로 로그인</a>:null}
             </div>
             <a style={closeButtonStyle} onClick={this.props.onCloseAside}>닫기</a>
