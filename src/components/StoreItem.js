@@ -95,7 +95,7 @@ class StoreItem extends React.Component {
           <span style={imageStyle}></span>
           <span style={descStyle}>[{this.props.storeName}] {this.props.menuName}</span>
           <span style={starStyle}><span style={{"color": "#FC4356"}}>★</span> {this.props.price}</span>
-          <button style={(this.state.star < this.props.price || this.props.isPurchased)?disabledButtonStyle:buttonStyle} onClick={() => {this.props.onBuy(this.props.menuName, "구매하시겠습니까?")}}>구매하기</button>
+          <button style={(this.state.star < this.props.price || this.props.isPurchased)?disabledButtonStyle:buttonStyle} onClick={() => {if(!this.props.isPurchased) {this.props.onBuy(this.props.menuName, "구매하시겠습니까?")}}}>구매하기</button>
         </div>
       </div>
     );
