@@ -56,7 +56,7 @@ export function getUserList(token, callback) {
 }
 
 export function getBadgeHistory(year, month, callback) {
-    const path = "/api/user/status/-temp-kakao-369757425/" + year + "/" + (month + 1);
+    const path = "/api/user/status/-temp-kakao-375867508/" + year + "/" + (month + 1);
 
     console.log(path);
 
