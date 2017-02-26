@@ -4,6 +4,7 @@ import AsideMenu from '../components/AsideMenu';
 import ProfileImage from '../components/ProfileImage';
 import { closeAside } from '../actions/AsideAction';
 import { undimming } from '../actions/DimmerAction';
+import { sessionLogout } from '../actions/SessionAction';
 
 class AsideContainer extends React.Component {
     constructor(args) {
@@ -21,7 +22,7 @@ class AsideContainer extends React.Component {
             left: "0px",
             top: "0px",
             zIndex: "1000",
-            backgroundColor: "#efefef",
+            backgroundColor: "#FFFFFF",
             borderWidth: "0px 1px 0px 0px",
             borderStyle: "solid",
             borderColor: "#888888"
@@ -48,7 +49,21 @@ class AsideContainer extends React.Component {
 
         let profileWrapperstyle = {
             position: "relative",
-            height: "200px"
+            height: "256px"
+        }
+        let logoutStyle = {
+            position: "absolute",
+            bottom: "0px",
+            right: "0px",
+            width: "92px",
+            height: "30px",
+            lineHeight: "33px",
+            textAlign: "center",
+            margin: "10px 0",
+            borderWidth: "0 0 0 1px",
+            borderStyle: "solid",
+            borderColor: "#efefef",
+            color: "#888888"
         }
 
         return this.props.active?<div style={style}>
@@ -58,6 +73,7 @@ class AsideContainer extends React.Component {
             </div>
             <a style={closeButtonStyle} onClick={this.props.onCloseAside}>닫기</a>
             <AsideMenu />
+            {this.props.isLogin?<div style={logoutStyle} onClick={this.props.onSessonLogout}>로그아웃</div>:null}
         </div>:null;
     }
 }
@@ -72,6 +88,9 @@ let mapStateToProps = (state) => {
 }
 let mapDispatchToProps = (dispatch) => {
     return {
+        onSessonLogout: () => {
+            dispatch(sessionLogout());
+        },
         onCloseAside: () => {
             dispatch(undimming());
             dispatch(closeAside());

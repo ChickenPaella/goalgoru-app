@@ -14,7 +14,7 @@ class DetailMenuList extends React.Component {
         }
         return <ul style={style}>
             {this.props.menus.map((menu, index) => {
-                return <DetailMenuItem key={menu.seq} name={menu.name} best={menu.best} type={menu.mainNutri} calorie={menu.calorie} price={menu.price} />
+                return <DetailMenuItem key={"menu_"+index} name={menu.name} best={menu.best} type={menu.mainNutri} calorie={menu.calorie} price={menu.price} />
             })}
         </ul>
     }

@@ -114,7 +114,6 @@ let mapStateToProps = (state) => {
 let mapDispatchToPros = (dispatch) => {
     return {
         onBuy: (product, message) => {
-            console.log(product, message);
             dispatch(dimming());
             dispatch(openConfirmPopup(product, message));
         },

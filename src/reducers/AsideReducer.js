@@ -1,6 +1,8 @@
 import { TOGGLE_ASIDE, CLOSE_ASIDE, OPEN_ASIDE } from "../actions/AsideAction.js";
 
-let initState = {}
+let initState = {
+    visible: true
+}
 
 export default (state=initState, action) => {
     switch(action.type) {
