@@ -5,7 +5,7 @@ class StarStat extends React.Component {
         super(props, context);
 
         this.state = {
-          "star": "15",
+          "star": 20,
           "user": {
             "id": "001",
             "name": "김유빈"
