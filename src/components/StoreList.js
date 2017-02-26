@@ -7,73 +7,53 @@ class StoreList extends React.Component {
 
         this.state = {
           "productList": [{
-            'store': {'id': '1', 'name': '국대'},
-            'menu': {'id': '1', 'name': '떡볶이 1인분', 'image': 'http://img.kookmincoupon.com/upload/company_images/i1748514096497562605.jpg'},
-            'price': 11
+            'store': {'id': '711', 'name': '세븐일레븐'},
+            'menu': {'id': '711_10000', 'name': '1만원 기프티콘', 'image': '../assets/images/store/7Eleven.png'},
+            'price': 12
           }, {
-            'store': {'id': '', 'name': '국대'},
-            'menu': {'id': '2', 'name': '떡볶이 2인분', 'image': 'http://img.kookmincoupon.com/upload/company_images/i1748514096497562605.jpg'},
-            'price': 22
+            'store': {'id': 'kakao_friends', 'name': '프렌즈'},
+            'menu': {'id': 'kakao_apeach_charger', 'name': '어피치 아이폰 홈버튼 스티커', 'image': '../assets/images/store/Apeach_TouchID.png'},
+            'price': 6
           }, {
-            'store': {'id': '', 'name': '국대'},
-            'menu': {'id': '3', 'name': '떡볶이 3인분', 'image': 'http://img.kookmincoupon.com/upload/company_images/i1748514096497562605.jpg'},
-            'price': 23
+            'store': {'id': 'cu', 'name': 'CU'},
+            'menu': {'id': 'cu_10000', 'name': '1만원 기프티콘', 'image': '../assets/images/store/CU.png'},
+            'price': 12
           }, {
-            'store': {'id': '', 'name': '국대'},
-            'menu': {'id': '4', 'name': '떡볶이 4인분', 'image': 'http://img.kookmincoupon.com/upload/company_images/i1748514096497562605.jpg'},
-            'price': 14
-          }, {
-            'store': {'id': '', 'name': '국대'},
-            'menu': {'id': '5', 'name': '떡볶이 5인분', 'image': 'http://img.kookmincoupon.com/upload/company_images/i1748514096497562605.jpg'},
-            'price': 15
-          }, {
-            'store': {'id': '', 'name': '국대'},
-            'menu': {'id': '6', 'name': '떡볶이 6인분', 'image': 'http://img.kookmincoupon.com/upload/company_images/i1748514096497562605.jpg'},
-            'price': 26
-          }, {
-            'store': {'id': '', 'name': '국대'},
-            'menu': {'id': '7', 'name': '떡볶이 7인분', 'image': 'http://img.kookmincoupon.com/upload/company_images/i1748514096497562605.jpg'},
-            'price': 27
-          }, {
-            'store': {'id': '', 'name': '국대'},
-            'menu': {'id': '8', 'name': '떡볶이 8인분', 'image': 'http://img.kookmincoupon.com/upload/company_images/i1748514096497562605.jpg'},
-            'price': 18
-          }, {
-            'store': {'id': '', 'name': '국대'},
-            'menu': {'id': '9', 'name': '떡볶이 9인분', 'image': 'http://img.kookmincoupon.com/upload/company_images/i1748514096497562605.jpg'},
+            'store': {'id': 'goobne', 'name': '굽네치킨'},
+            'menu': {'id': 'goobne_garlic', 'name': '소이갈릭', 'image': '../assets/images/store/Goobne_Garlic.png'},
             'price': 19
           }, {
-            'store': {'id': '', 'name': '국대'},
-            'menu': {'id': '10', 'name': '떡볶이 10인분', 'image': 'http://img.kookmincoupon.com/upload/company_images/i1748514096497562605.jpg'},
-            'price': 20
+            'store': {'id': 'goobne', 'name': '굽네치킨'},
+            'menu': {'id': 'goobne_original', 'name': '오리지널', 'image': '../assets/images/store/Goobne_Original.png'},
+            'price': 17
           }, {
-            'store': {'id': '', 'name': '국대'},
-            'menu': {'id': '11', 'name': '떡볶이 11인분', 'image': 'http://img.kookmincoupon.com/upload/company_images/i1748514096497562605.jpg'},
-            'price': 11
+            'store': {'id': 'goobne', 'name': '굽네치킨'},
+            'menu': {'id': 'goobne_seasoning', 'name': '양념', 'image': '../assets/images/store/Goobne_Seasoning.png'},
+            'price': 19
           }, {
-            'store': {'id': '', 'name': '국대'},
-            'menu': {'id': '12', 'name': '떡볶이 12인분', 'image': 'http://img.kookmincoupon.com/upload/company_images/i1748514096497562605.jpg'},
-            'price': 22
+            'store': {'id': 'gs25', 'name': 'GS25'},
+            'menu': {'id': 'gs25_10000', 'name': '1만원 기프티콘', 'image': '../assets/images/store/GS.png'},
+            'price': 12
           }, {
-            'store': {'id': '', 'name': '국대'},
-            'menu': {'id': '13', 'name': '떡볶이 13인분', 'image': 'http://img.kookmincoupon.com/upload/company_images/i1748514096497562605.jpg'},
-            'price': 13
+            'store': {'id': 'lguplus', 'name': 'LG U+'},
+            'menu': {'id': 'lgu_data_100', 'name': '데이터 쿠폰 100MB', 'image': '../assets/images/store/LG.png'},
+            'price': 3
           }, {
-            'store': {'id': '', 'name': '국대'},
-            'menu': {'id': '14', 'name': '떡볶이 14인분', 'image': 'http://img.kookmincoupon.com/upload/company_images/i1748514096497562605.jpg'},
-            'price': 14
+            'store': {'id': 'olleh', 'name': 'olleh'},
+            'menu': {'id': 'olleh_data_100', 'name': '데이터 쿠폰 100MB', 'image': '../assets/images/store/LG.png'},
+            'price': 3
           }, {
-            'store': {'id': '', 'name': '국대'},
-            'menu': {'id': '15', 'name': '떡볶이 15인분', 'image': 'http://img.kookmincoupon.com/upload/company_images/i1748514096497562605.jpg'},
-            'price': 15
+            'store': {'id': 'kakao_friends', 'name': '프렌즈'},
+            'menu': {'id': 'kakao_ryan_phillow', 'name': '바디필로우', 'image': '../assets/images/store/Ryan_Phillow.png'},
+            'price': 44
           }, {
-            'store': {'id': '', 'name': '국대'},
-            'menu': {'id': '16', 'name': '떡볶이 16인분', 'image': 'http://img.kookmincoupon.com/upload/company_images/i1748514096497562605.jpg'},
-            'price': 26
+            'store': {'id': 'skt', 'name': 'SKT'},
+            'menu': {'id': 'skt_data_100', 'name': '데이터 쿠폰 100MB', 'image': '../assets/images/store/SKT.png'},
+            'price': 3
           }, {
-            'store': {'id': '', 'name': '국대'},
-            'menu': {'id': '17', 'name': '떡볶이 17인분', 'image': 'http://img.kookmincoupon.com/upload/company_images/i1748514096497562605.jpg'},
-            'price': 27
+            'store': {'id': 'kakao_friends', 'name': '프렌즈'},
+            'menu': {'id': 'kakao_tube_charger', 'name': 'TUBE 빅바 보조배터리 10000D', 'image': '../assets/images/store/Tube_Charger.png'},
+            'price': 50
           }]
         };
     }
@@ -101,7 +81,10 @@ class StoreList extends React.Component {
       };
 
       return (
-        <div style={style}>{mapToComponents(this.state.productList)}</div>
+        <div style={style}>
+          {mapToComponents(this.state.productList)}
+          <div style={{"clear": "both"}}> </div>
+        </div>
       );
     }
 }

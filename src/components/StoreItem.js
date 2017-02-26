@@ -21,14 +21,16 @@ class StoreItem extends React.Component {
     "float": "left",
       "position": "relative",
       "display": "inline-block",
-      "width": "50%",
+      "width": "49%",
+      "margin": "0.5%",
       "backgroundColor": "#FFFFFF"
     };
 
     let imageStyle = {
       "display": "inline-block",
       "backgroundImage": "url(' " + this.props.menuImage + "')",
-      "backgroundSize": "cover",
+      "backgroundSize": "contain",
+      "backgroundPosition": "center center",
       "width": "100%",
       "height": "120px"
     };
