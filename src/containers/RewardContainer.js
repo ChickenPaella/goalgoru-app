@@ -1,6 +1,7 @@
 import React from 'react';
 import StarStat from '../components/StarStat';
 import StoreList from '../components/StoreList';
+import ConfirmPopup from '../components/ConfirmPopup';
 import { connect } from 'react-redux';
 import { changeTitle } from '../actions/NavigationAction';
 
@@ -19,6 +20,7 @@ class RewardContainer extends React.Component {
       <div style={style}>
         <StarStat />
         <StoreList />
+        <ConfirmPopup />
       </div>
     );
   }

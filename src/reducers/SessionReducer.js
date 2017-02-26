@@ -3,8 +3,8 @@ import { SESSION_LOGIN, SESSION_LOGOUT, SET_AUTH_TOKEN } from '../actions/Sessio
 const initState = {
     isLogin: false,
     profileImage: null,
-    username: null,
-    token:null,
+    username: "배성훈",
+    token:"test-token",
 }
 
 export default (state=initState, action) => {
@@ -18,7 +18,9 @@ export default (state=initState, action) => {
                 isLogin: false
             });
         case SET_AUTH_TOKEN:
+            console.log(action);
             return Object.assign({}, state, {
+                isLogin: true,
                 token: action.token
             });
         default:

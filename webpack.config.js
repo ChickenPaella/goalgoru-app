@@ -9,7 +9,9 @@ module.exports = {
     devServer: {
         inline: true,
         port: 3000,
-        historyApiFallback: true,
+        historyApiFallback: {
+            rewrites: [{ from: /^(?!\/assets\/)/i, to: '/index.html' }]
+        },
         contentBase: __dirname + '/public'
     },
 

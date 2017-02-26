@@ -1,5 +1,6 @@
 import React from "react";
 import { dimming, undimming } from "../actions/DimmerAction";
+import { openConfirmPopup } from '../actions/ConfirmPopupAction';
 import { connect } from "react-redux";
 
 class StoreItem extends React.Component {
@@ -90,8 +91,7 @@ class StoreItem extends React.Component {
         <span style={imageStyle}></span>
         <span style={descStyle}>[{this.props.storeName}] {this.props.menuName}</span>
         <span style={starStyle}><span style={{"color": "#FC4356"}}>★</span> {this.props.price}</span>
-        <button style={(this.state.star < this.props.price)?disabledButtonStyle:buttonStyle}
-                >구매하기</button>
+        <button style={(this.state.star < this.props.price)?disabledButtonStyle:buttonStyle} onClick={() => {this.props.onBuy(this.props.menuName, "구매하시겠습니까?")}}>구매하기</button>
         </div>
       </div>
     );
@@ -113,8 +113,10 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToPros = (dispatch) => {
     return {
-        onDimming: () => {
+        onBuy: (product, message) => {
+            console.log(product, message);
             dispatch(dimming());
+            dispatch(openConfirmPopup(product, message));
         },
         onUndimming: () => {
             dispatch(undimming());

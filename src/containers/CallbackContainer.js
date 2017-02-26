@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { browserHistory } from 'react-router'
 import { connect } from 'react-redux';
 import { setAuthToken } from '../actions/SessionAction';
 import { getUserList } from '../modules/ApiModule';
@@ -11,9 +12,7 @@ class CallbackContainer extends React.Component {
     }
 
     componentDidMount() {
-        getUserList(this.props.token, (data) => {
-            
-        });
+        browserHistory.push('/');
     }
 
     render() {

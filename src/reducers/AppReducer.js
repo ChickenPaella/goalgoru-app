@@ -8,7 +8,7 @@ import PopupReducer from './PopupReducer';
 import SearchReducer from './SearchReducer';
 import SessionReducer from './SessionReducer';
 import SpinnerReducer from './SpinnerReducer';
-
+import ConfirmPopupReducer from './ConfirmPopupReducer';
 
 const AppReducer = combineReducers({
     aside: AsideReducer,
@@ -20,6 +20,7 @@ const AppReducer = combineReducers({
     search: SearchReducer,
     session: SessionReducer,
     spinner: SpinnerReducer,
+    confirm: ConfirmPopupReducer,
 });
 
 export default AppReducer;
