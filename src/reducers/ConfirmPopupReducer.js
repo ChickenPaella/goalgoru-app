@@ -17,7 +17,6 @@ export default (state=initState, action) => {
                 visible: true,
             });
         case OPEN_STANDBY_POPUP:
-            console.log(action.message);
             return Object.assign({}, state, {
                 messge: action.message,
                 mode: 1,

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import { undimming } from '../actions/DimmerAction';
 import { closePopup } from '../actions/PopupAction';
 import FontAwesome from 'react-fontawesome';
@@ -78,6 +79,8 @@ class DetailMenuPopup extends React.Component {
             borderBottomRightRadius: "5px",
             fontSize: "17px",
             color: "#444444",
+            textDecoration: "none",
+            lineHeight: "60px",
         }
 
         return <div style={style}>
@@ -91,7 +94,7 @@ class DetailMenuPopup extends React.Component {
                 <div style={listItemStyle}><span>나트륨(mg)</span><span style={amountStyle}>{this.props.content[8]}</span></div>
                 <div style={listItemStyle}><span>칼로리(kcal)</span><span style={amountStyle}>{this.props.content[9]}</span></div>
             </div>
-            <button style={buttonStyle}>잘 먹겠습니다!</button>
+            <Link to='/my' style={buttonStyle} onClick={this.props.onMove}>잘 먹겠습니다!</Link>
             <FontAwesome style={closeButtonStyle} name="times" onClick={this.props.onClosePopup} />
         </div>
     }
@@ -108,6 +111,10 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
     return {
         onClosePopup: () => {
+            dispatch(undimming());
+            dispatch(closePopup());
+        },
+        onMove:() => {
             dispatch(undimming());
             dispatch(closePopup());
         }

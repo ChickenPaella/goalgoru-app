@@ -20,6 +20,11 @@ function get(path, callback) {
     axios.get(path).then((response) => {callback(responseFilter(response))}).catch(callback(false));
 }
 
+export function getUserInfo(userid, callback) {
+    const path = "/api/user/view/"+userid
+    get(path, callback);
+}
+
 export function getNutriOfFood(foodName, callback) {
     const path = "/api/food/nutri/"+encodeURIComponent(foodName);
     get(path, callback);

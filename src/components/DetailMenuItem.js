@@ -24,7 +24,7 @@ class DetailMenuItem extends React.Component {
 
     render() {
         let style = {
-            borderTop: "6px solid #efefef",
+            borderTop: "1px solid #efefef",
             padding: "22px 24px",
             height: "36px"
         }
@@ -47,7 +47,6 @@ class DetailMenuItem extends React.Component {
             fontWeight: 300
         }
         let descriptionStyle = {
-            fontWeight: 700,
             fontSize: "14px"
         }
         let bestStyle = {
