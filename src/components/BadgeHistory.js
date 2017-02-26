@@ -5,6 +5,7 @@ class BadgeHistory extends React.Component {
     constructor(props, context) {
       super(props, context);
 
+
       this.state = {
         history: [{
           'id': 'history001',
@@ -80,14 +81,14 @@ class BadgeHistory extends React.Component {
 
         return data.map((item, i) => {
           return (<BadgeHistoryItem
-                      key={item.id}
-                      menuId={item.menu.id}
-                      menuName={item.menu.name}
-                      storeId={item.store.id}
-                      storeName={item.store.name}
-                      date={item.date}
-                      isValidated={item.isValidated}
-                      badgeType={item.badgeType}
+                      key={item.seq}
+                      menuId={item.foodName}
+                      menuName={item.foodName}
+                      storeId={item.restaurantName}
+                      storeName={item.restaurantName}
+                      date={item.eatDate}
+                      isValidated={item.receiptDate !== null}
+                      badgeType={item.mainNutri}
                       />);
         });
       };
@@ -103,7 +104,7 @@ class BadgeHistory extends React.Component {
         };
 
         return (
-          <ul style={style}>{mapToComponents(this.state.history)}</ul>
+          <ul style={style}>{mapToComponents(this.props.history)}</ul>
         );
     }
 }

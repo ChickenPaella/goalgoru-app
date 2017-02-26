@@ -1,8 +1,6 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import { PieChart, Pie, Cell } from 'recharts';
-import { connect } from 'react-redux';
-import { prevMonth, nextMonth } from '../actions/MyPageAction';
 
 class MyNutritionStatus extends React.Component {
     constructor(props, context) {
@@ -85,7 +83,7 @@ class MyNutritionStatus extends React.Component {
         };
 
         /* Graph 처리 */
-        let data = [{name: '단백질', value: 90, color: "#ff8b36"}, {name: '탄수화물', value: 5, color: "#FFFFFF"}, {name: '지방', value: 5, color: "#fcf41e"}];
+        let data = [{name: '단백질', value: this.props.protein, color: "#ff8b36"}, {name: '탄수화물', value: this.props.carbo, color: "#FFFFFF"}, {name: '지방', value: this.props.fat, color: "#fcf41e"}];
         const RADIAN = Math.PI / 180;
         const percentLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
          	const radius = outerRadius * 0.5;
@@ -144,24 +142,10 @@ class MyNutritionStatus extends React.Component {
     }
 }
 
-let mapStateToProps = (state) => {
-    return {
-        year: state.mypage.year,
-        month: state.mypage.month
-    };
-};
-
-let mapDispatchToProps = (dispatch) => {
-    return {
-      onPrevMonth: () => {
-          dispatch(prevMonth());
-      },
-      onNextMonth: () => {
-          dispatch(nextMonth());
-      }
-    };
-};
-
-MyNutritionStatus = connect(mapStateToProps, mapDispatchToProps)(MyNutritionStatus);
+MyNutritionStatus.defaultProps = {
+  "protein": 1,
+  "fat": 1,
+  "carbo": 1
+}
 
 export default MyNutritionStatus;
