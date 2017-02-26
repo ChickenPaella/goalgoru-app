@@ -12,11 +12,11 @@ class Validate extends React.Component {
         super(props, context);
 
         this.state = {
-          "date": 0,
-          "menu": {"id": "001", "name": "불고기 백반"},
-          "store": {"id": "001", "name": "골고루식당"},
+          "date": 1488077437945,
+          "menu": {"id": "001", "name": "비빔밥"},
+          "store": {"id": "001", "name": "토마토 식당"},
 
-          "gotBadge": "단백질"
+          "gotBadge": "탄수화물"
         };
     }
 
