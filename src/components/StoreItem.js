@@ -8,7 +8,7 @@ class StoreItem extends React.Component {
       super(props, context);
 
       this.state = {
-        "star": "15",
+        "star": 20,
         "user": {
           "id": "001",
           "name": "김유빈"
@@ -21,14 +21,17 @@ class StoreItem extends React.Component {
     "float": "left",
       "position": "relative",
       "display": "inline-block",
-      "width": "50%",
+      "width": "49%",
+      "margin": "0.5%",
       "backgroundColor": "#FFFFFF"
     };
 
     let imageStyle = {
       "display": "inline-block",
       "backgroundImage": "url(' " + this.props.menuImage + "')",
-      "backgroundSize": "cover",
+      "backgroundSize": "contain",
+      "backgroundPosition": "center center",
+      "backgroundRepeat": "no-repeat",
       "width": "100%",
       "height": "120px"
     };
@@ -49,7 +52,8 @@ class StoreItem extends React.Component {
       "padding": "5px",
       "backgroundColor": "#404040",
       "color": "#FFFFFF",
-      "opacity": "0.7"
+      "opacity": "0.7",
+      "display": (this.props.isPurchased)?"block":"none"
     };
 
     let starStyle = {
@@ -87,11 +91,11 @@ class StoreItem extends React.Component {
     return (
       <div style={style}>
         <div style={innerStyle}>
-        <span style={purchasedStyle}>결제완료</span>
-        <span style={imageStyle}></span>
-        <span style={descStyle}>[{this.props.storeName}] {this.props.menuName}</span>
-        <span style={starStyle}><span style={{"color": "#FC4356"}}>★</span> {this.props.price}</span>
-        <button style={(this.state.star < this.props.price)?disabledButtonStyle:buttonStyle} onClick={() => {this.props.onBuy(this.props.menuName, "구매하시겠습니까?")}}>구매하기</button>
+          <span style={purchasedStyle}>결제완료</span>
+          <span style={imageStyle}></span>
+          <span style={descStyle}>[{this.props.storeName}] {this.props.menuName}</span>
+          <span style={starStyle}><span style={{"color": "#FC4356"}}>★</span> {this.props.price}</span>
+          <button style={(this.state.star < this.props.price || this.props.isPurchased)?disabledButtonStyle:buttonStyle} onClick={() => {if(!this.props.isPurchased) {this.props.onBuy(this.props.menuName, "구매하시겠습니까?")}}}>구매하기</button>
         </div>
       </div>
     );
