@@ -100,9 +100,9 @@ class Validate extends React.Component {
       });
 
       let badgeStyle = {
-        "width": "50%",
+        "height": "50%",
         "display": "block",
-        "margin": "10px auto"
+        "margin": "24px auto"
       };
 
       const getDate = () => {

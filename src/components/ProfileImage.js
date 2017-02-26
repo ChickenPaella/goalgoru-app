@@ -65,7 +65,7 @@ class ProfileImage extends React.Component {
         let boxToLoginStyle = {
             float:"left",
             width: "70px",
-            height: "72px",
+            height: "73px",
             position: "relative",
             backgroundColor: "#FFFFFF",
             borderWidth: "1px 0 1px 0",

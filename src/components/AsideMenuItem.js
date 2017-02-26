@@ -10,13 +10,13 @@ class AsideMenuItem extends React.Component {
             borderStyle: "solid",
             borderWidth: "1px 0px 0px",
             borderColor: "#dfdfdf",
-            backgroundColor: this.props.active?"#5836c9":"#ffffff"
+            backgroundColor: "#ffffff"
         }
         let linkStyle = {
             display: "block",
             padding: "17px 0 16px 24px",
             textDecoration: "none",
-            color: this.props.active?"#ffffff":"#666666"
+            color: "#666666"
         }
 
         if(this.props.index == 3) {
