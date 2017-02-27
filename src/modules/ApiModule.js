@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const BASE_URL = "http://goalgoru.com:8080";
-// const BASE_URL = "http://192.168.51.51:8080";
+//const BASE_URL = "http://localhost:8080";
 
 function responseFilter(response) {
     if(response.status == 200) {
@@ -16,12 +16,16 @@ function responseFilter(response) {
 }
 
 function get(path, callback) {
+	const token = localStorage.getItem('token');
+	const data = { headers: {} };
+	if(token != null) data.headers['X-AUTH-TOKEN'] = token;
     axios.defaults.baseURL = BASE_URL;
-    axios.get(path).then((response) => {callback(responseFilter(response))}).catch(callback(false));
+    axios.get(path, data).then((response) => {callback(responseFilter(response))}).catch(callback(false));
 }
 
-export function getUserInfo(userid, callback) {
-    const path = "/api/user/view/"+userid
+export function getUserInfo(token, callback) {
+	localStorage.setItem('token', token);
+    const path = "/api/user/view/me";
     get(path, callback);
 }
 

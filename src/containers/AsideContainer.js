@@ -12,7 +12,7 @@ class AsideContainer extends React.Component {
         super(args);
         this.state = {
             loginUrl: "http://goalgoru.com:8080/api/auth/kakao"
-            // loginUrl: "http://192.168.51.51:8080/api/auth/kakao"
+            //loginUrl: "http://localhost:8080/api/auth/kakao"
         }
     }
     render() {
