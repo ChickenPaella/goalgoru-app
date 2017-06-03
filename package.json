@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server --hot --host 0.0.0.0"
+    "start": "./node_modules/.bin/webpack-dev-server --hot --host 0.0.0.0",
+    "package": "webpack --config webpack.config.production.js --progress --colors",
   },
   "author": "",
   "license": "ISC",
