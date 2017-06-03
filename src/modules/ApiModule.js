@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-//const BASE_URL = "http://goalgoru.com:8080";
-const BASE_URL = "http://localhost:8080";
+const BASE_URL = "http://goalgoru.com:8080";
 
 function responseFilter(response) {
     if(response.status == 200) {
